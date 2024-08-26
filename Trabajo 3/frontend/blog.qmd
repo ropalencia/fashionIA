@@ -1,5 +1,5 @@
 ---
-title: "Optimización heurística"
+title: "Recomendación de moda"
 lang: es    
 author:
   - name: Ronald Gabriel Palencia
@@ -19,6 +19,9 @@ appendix-style: default
 ---
 
 ## portada 
+
+
+
 
 
 
