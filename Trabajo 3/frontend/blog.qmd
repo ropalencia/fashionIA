@@ -1,0 +1,26 @@
+---
+title: "Optimización heurística"
+lang: es    
+author:
+  - name: Ronald Gabriel Palencia
+    email: ropalencia@unal.edu.co
+  - name: Junior Antonio Muños Henao
+    email: jmunozhe@unal.edu.co
+format:
+  html:
+    code-fold: true
+jupyter: python3
+echo: false
+theme:
+          light: flatly
+          dark: darkly
+toc: true
+appendix-style: default
+---
+
+## portada 
+
+
+
+
+

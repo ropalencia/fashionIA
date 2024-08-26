@@ -1,0 +1,4 @@
+- source: blog.qmd
+  quarto-pub:
+    - id: ab6ced85-7919-49ef-ae9e-f437cb11610c
+      url: 'https://palenciaronald.quarto.pub/blog_trabajo1-533f'
