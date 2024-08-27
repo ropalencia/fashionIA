@@ -20,14 +20,31 @@ appendix-style: default
 
 # Introducción 
 
+En el contexto del comercio electrónico de moda, los consumidores enfrentan un desafío creciente conocido como la parálisis por análisis. Este fenómeno se caracteriza por la dificultad de tomar decisiones de compra debido a la sobreabundancia de opciones disponibles, lo que puede llevar a la indecisión y, en ocasiones, a la insatisfacción con el proceso de compra. La rapidez con la que evolucionan las tendencias de moda y la demanda de personalización intensifican aún más este problema, creando un entorno en el que los consumidores se sienten abrumados y ansiosos.
 
-aqui poner la introdución del trabajo 2
+En el Trabajo 2, se abordó esta problemática en profundidad, destacando cómo la sobreabundancia de opciones y la volatilidad de las tendencias impactan negativamente en la experiencia de compra. Se presentó la solución propuesta: un sistema de recomendación de moda basado en deep learning, diseñado para simplificar la experiencia de compra al ofrecer sugerencias personalizadas y adaptativas a las tendencias actuales. Esta solución busca mitigar la parálisis por análisis al proporcionar recomendaciones que se alineen con las preferencias individuales y los valores de los consumidores, facilitando así una experiencia de compra más eficiente y satisfactoria.
+
+El presente Trabajo se enfoca en desarrollar e implementar esta solución, profundizando en los aspectos técnicos, metodológicos y económicos necesarios para su realización. La introducción de este trabajo reiterará el problema identificado y explorará cómo la solución propuesta en el Trabajo 02 será aplicada y evaluada en el contexto del desarrollo del sistema de recomendación. Esto incluirá una revisión de las metodologías y estrategias empleadas para abordar la parálisis por análisis y cómo estas se integrarán para mejorar la experiencia del consumidor en el mercado de moda digital.
+
+En particular, en este Trabajo se detalla la implementación técnica del sistema de recomendación, que incluye el desarrollo y entrenamiento de modelos de deep learning para procesar y analizar grandes volúmenes de datos de moda. Se utilizarán técnicas avanzadas de procesamiento de lenguaje natural (NLP) para extraer características relevantes de descripciones de productos y reseñas de usuarios. Además, se integrarán mecanismos de feedback en tiempo real para ajustar las recomendaciones en función de las interacciones del usuario, y se evaluará el rendimiento del sistema mediante métricas de precisión y relevancia. Este enfoque técnico busca optimizar la personalización de las recomendaciones y asegurar que el sistema pueda adaptarse a las preferencias cambiantes de los consumidores, proporcionando así una solución robusta y eficaz a la parálisis por análisis.
 
 
 # Análisis de requisitos del sistema
 
-aqui poner una tabla con los requisitos o historias de usuarios basicas 
 
+```{python}
+import pandas as pd
+
+# Crear un DataFrame
+data = {
+    "Requisitos funcionales": ["El sistema debe ser capaz de analizar interacciones, preferencias y comportamientos de compra de los usuarios para ofrecer recomendaciones de moda personalizadas que reflejen su estilo y necesidades.", "El sistema debe filtrar entre miles de productos para presentar solo aquellos que se alineen con las preferencias y necesidades del usuario, mejorando la eficiencia en la experiencia de compra.","El sistema debe ofrecer una plataforma dinámica que permita a los usuarios descubrir nuevas tendencias, diseñadores emergentes y marcas éticas, enriqueciendo su experiencia de compra.","El sistema debe adaptarse continuamente a las tendencias de moda globales y a los cambios en el comportamiento de los usuarios, asegurando que las recomendaciones sean siempre relevantes."],
+    "Requisitos no funcionales": ["El sistema debe ser capaz de recuperarse rápidamente de fallos y seguir operando con un mínimo de interrupciones.", "El sistema debe ser escalable para manejar un gran volumen de usuarios y datos, garantizando un rendimiento eficiente incluso durante picos de demanda.","El sistema debe estar disponible para los usuarios en todo momento, con un tiempo de inactividad mínimo, garantizando la fiabilidad del servicio.","El sistema debe proporcionar recomendaciones en el menor tiempo posible para asegurar una experiencia de usuario fluida."],
+}
+df = pd.DataFrame(data)
+
+# Mostrar la tabla en Markdown
+print(df.to_markdown(index=False))
+```
 # Diagrama de arquitectura
 
 aqui porner una imagen con el digrama de bases de datos 
