@@ -18,7 +18,18 @@ toc: true
 appendix-style: default
 ---
 
-## portada 
+# Introducción 
+
+
+# Análisis de requisitos del sistema
+
+
+# Diagrama de arquitectura
+
+
+# Evidencias de pruebas funcionales
+
+Para el desarrollo de este trabajo se uso una base datos 
 
 ```{python}
 import numpy as np
@@ -52,26 +63,6 @@ init_notebook_mode(connected=True)
 
 
 
-```{python}
-#import zipfile
-#import os
-
-# Ruta del archivo ZIP en tu Google Drive
-#zip_path = '/content/drive/Shareddrives/Redes 2024_1/Trabajo 3/archive.zip'
-
-# Ruta donde deseas extraer los archivos
-#extract_to = '/content/drive/Shareddrives/Redes 2024_1/Trabajo 3/extracted_files'
-
-# Crear el directorio si no existe
-#os.makedirs(extract_to, exist_ok=True)
-
-# Descomprimir el archivo
-#with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-#    zip_ref.extractall(extract_to)
-
-#print(f'Archivos extraídos en: {extract_to}')
-```
-
 
 ```{python}
 styles_df = pd.read_csv("../Datos/styles.csv", on_bad_lines='skip')
@@ -82,10 +73,42 @@ styles_df['filename'] = styles_df['id'].astype(str) + '.jpg'
 ```
 
 
+Ejemplo de la base de datos inicial con la que se trabajara el problema 
+
+* id: 
+
+* gender:
+
+* masterCategory: 
+
+* subCategory: 
+
+* articleType: 
+
+* baseColour:
+
+* season: 
+
+* year: 
+
+* usage: 
+
+* productDisplayName: 
+
+* filename: 
+
+
+
+
 ```{python}
-styles_df
+styles_df.head(5)
+
 ```
 
+
+```{python}
+styles_df.columns
+```
 
 ```{python}
 #Nota: primero cambiar images por pruebas y correr, luego volver a poner images y ahi si lee todas las direcciones, es raro al verdad
@@ -96,7 +119,7 @@ image_files = os.listdir("../Datos/extracted_files/images")
 
 
 ```{python}
-len(image_files)
+#len(image_files)
 ```
 
 
