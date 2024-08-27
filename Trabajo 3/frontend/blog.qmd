@@ -45,6 +45,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
 from tensorflow.keras.applications import VGG16, ResNet50, DenseNet201, Xception
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.utils import plot_model
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
 init_notebook_mode(connected=True)
 ```
@@ -73,7 +74,7 @@ init_notebook_mode(connected=True)
 
 
 ```{python}
-styles_df = pd.read_csv("styles.csv", on_bad_lines='skip')
+styles_df = pd.read_csv("../Datos/styles.csv", on_bad_lines='skip')
 ```
 
 ```{python}
@@ -88,7 +89,9 @@ styles_df
 
 ```{python}
 #Nota: primero cambiar images por pruebas y correr, luego volver a poner images y ahi si lee todas las direcciones, es raro al verdad
-image_files = os.listdir("extracted_files/images")
+
+#Esto parece que no hace falta en qmd
+image_files = os.listdir("../Datos/extracted_files/images")
 ```
 
 
@@ -106,7 +109,7 @@ image_files[:5]
 import os
 
 def check_image_path(filename):
-    path = os.path.join("extracted_files/images", filename)
+    path = os.path.join("../Datos/extracted_files/images", filename)
     return path if os.path.exists(path) else None
 
 styles_df['filename'] = styles_df['filename'].apply(check_image_path)
@@ -294,8 +297,8 @@ val_features = model.predict(val_generator,verbose=1)
 import pickle
 
 # Especificar la ruta para guardar los archivos
-train_features_path = '/content/drive/Shareddrives/Redes 2024_1/Trabajo 3/train_features.pkl'
-val_features_path = '/content/drive/Shareddrives/Redes 2024_1/Trabajo 3/val_features.pkl'
+train_features_path = '../Modelos/train_features.pkl'
+val_features_path = '../Modelos/val_features.pkl'
 
 # Guardar train_features en un archivo .pkl
 with open(train_features_path, 'wb') as f:
@@ -312,8 +315,8 @@ with open(val_features_path, 'wb') as f:
 import pickle
 
 # Especificar la ruta para cargar los archivos
-train_features_path = '/content/drive/Shareddrives/Redes 2024_1/Trabajo 3/train_features.pkl'
-val_features_path = '/content/drive/Shareddrives/Redes 2024_1/Trabajo 3/val_features.pkl'
+train_features_path = '../Modelos/train_features.pkl'
+val_features_path = '../Modelos/val_features.pkl'
 
 # Cargar train_features desde el archivo .pkl
 with open(train_features_path, 'rb') as f:
@@ -375,7 +378,7 @@ px.line(x = pcs, y = variance_explained, title = 'Principal Components Cumulativ
 ```{python}
 
 # Especificar la ruta para guardar el modelo PCA
-pca_model_path = '/content/drive/Shareddrives/Redes 2024_1/Trabajo 3/pca_model.pkl'
+pca_model_path = '../Modelos/pca_model.pkl'
 
 # Guardar el modelo PCA en un archivo .pkl
 with open(pca_model_path, 'wb') as f:
@@ -417,7 +420,7 @@ import pickle
 
 # Suponiendo que X e y ya están definidos
 # Especificar la ruta para guardar el modelo
-knn_model_path = '/content/drive/Shareddrives/Redes 2024_1/Trabajo 3/knn_model.pkl'
+knn_model_path = '../Modelos/knn_model.pkl'
 
 # Entrenar el modelo KNN
 neigh = KNeighborsClassifier(n_neighbors=6)
@@ -494,7 +497,7 @@ def recommend_similar_products(input_image_path, model, pca, neigh, val_sampled,
 ```{python}
 
 # Ejemplo de uso de la función
-input_image_path = '/content/drive/Shareddrives/Redes 2024_1/Trabajo 3/extracted_files/pruebas/54055.jpg'
+input_image_path = '../Datos/extracted_files/pruebas/54055.jpg'
 
 # Llamar a la función de recomendación
 recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num_recommendations=5)
