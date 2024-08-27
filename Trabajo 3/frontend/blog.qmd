@@ -21,11 +21,16 @@ appendix-style: default
 # Introducción 
 
 
+aqui poner la introdución del trabajo 2
+
+
 # Análisis de requisitos del sistema
 
+aqui poner una tabla con los requisitos o historias de usuarios basicas 
 
 # Diagrama de arquitectura
 
+aqui porner una imagen con el digrama de bases de datos 
 
 # Evidencias de pruebas funcionales
 
