@@ -9,8 +9,9 @@ author:
 format:
   html:
     code-fold: true
+    code-summary: "Show the code"
 jupyter: python3
-echo: false
+#echo: false
 theme:
           light: flatly
           dark: darkly
@@ -55,10 +56,12 @@ aqui porner una imagen con el digrama de bases de datos y explicar de donde vien
 ## EDA and Visualization
 
 ```{python}
+#| echo: true
 import numpy as np
 import pandas as pd
 import os
 import re
+from sklearn.decomposition import PCA
 
 import tensorflow as tf
 from threading import Thread
@@ -194,6 +197,10 @@ val_sampled = val.sample(n=200, random_state=42).reset_index(drop=True)
 ```
 
 
+### Preparador del generador de imagenes 
+
+
+En esta etapa del proceso, se utiliza ImageDataGenerator de la biblioteca Keras para generar y preprocesar imágenes a partir de los datos. Inicialmente, se normalizan los valores de los píxeles de las imágenes, ajustándolos a un rango de [0, 1], lo que ayuda a mejorar la estabilidad y el rendimiento del modelo durante su entrenamiento. Posteriormente, se configuran dos generadores de imágenes: uno para el conjunto de entrenamiento y otro para el de validación. Ambos generadores redimensionan las imágenes a un tamaño uniforme de 256x256 píxeles y las agrupan en lotes de 32. Estos generadores permiten procesar las imágenes de manera eficiente en tiempo real, evitando la necesidad de cargar todo el conjunto de datos en memoria, lo que facilita la gestión de grandes volúmenes de datos durante el entrenamiento y la validación del modelo. Todo este proceso se puede observar en detalle en el script disponible en el repositorio, https://github.com/ropalencia/fashionIA/tree/main/Trabajo%203/Backend
 
 
 ```{python}
@@ -221,33 +228,40 @@ val_generator = datagen.flow_from_dataframe(dataframe=val_sampled,
 train_generator
 ```
 
-## Una muestra de imagen de entrenamiento
-```{python}
-# Obtener el primer lote de imágenes
-images_batch = next(train_generator)
-# Imprimir la forma del lote de imágenes
-print(images_batch.shape)  # Debe ser (32, 256, 256, 3) si batch_size=32 y las imágenes son RGB
-# Mostrar la primera imagen del lote
-import matplotlib.pyplot as plt
-plt.imshow(images_batch[0])
-plt.title('Primera imagen del primer lote')
-plt.show()
-```
+### Imagenes de muestra de los datos 
 
-## Una muestra de imagen de entrenamiento
 
 ```{python}
-# Obtener el primer lote de imágenes
-images_batch = next(val_generator)
-# Imprimir la forma del lote de imágenes
-print(images_batch.shape)  # Debe ser (32, 256, 256, 3) si batch_size=32 y las imágenes son RGB
-# Mostrar la primera imagen del lote
 import matplotlib.pyplot as plt
-plt.imshow(images_batch[0])
-plt.title('Primera imagen del primer lote')
+
+# Obtener el primer lote de imágenes de entrenamiento y validación
+train_images_batch = next(train_generator)
+val_images_batch = next(val_generator)
+
+# Crear un mosaico con las dos imágenes
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+
+# Mostrar la primera imagen del lote de entrenamiento
+axes[0].imshow(train_images_batch[0])
+axes[0].set_title('Muestra de imagen de entrenamiento')
+
+# Mostrar la primera imagen del lote de validación
+axes[1].imshow(val_images_batch[0])
+axes[1].set_title('Muestra de imagen de validación')
+
+# Eliminar los ejes para una mejor visualización
+for ax in axes:
+    ax.axis('off')
+
+# Mostrar el mosaico
 plt.show()
+
 ```
 
+
+### Configuración del Modelo Base y Arquitectura Final
+
+En esta etapa del proyecto, se configura la arquitectura del modelo utilizando la red preentrenada VGG16, conocida por su eficacia en tareas de visión por computadora. Primero, se carga el modelo VGG16 excluyendo sus capas finales, ya que solo se necesitan las capas convolucionales que extraen características de las imágenes. Luego, se crea un modelo secuencial en el que se añaden todas las capas de VGG16. Para finalizar, se incorpora una capa de GlobalAveragePooling2D, que reduce la dimensionalidad de las características extraídas, preparando el modelo para la tarea específica que se va a abordar. Este proceso permite aprovechar el aprendizaje previo de VGG16 mientras se adapta a nuevas entradas. Toda esta configuración se puede revisar en detalle en el script disponible en el repositorio
 
 ```{python}
 base_model = VGG16(include_top=False,input_shape=(256,256,3))
@@ -257,38 +271,43 @@ for layer in base_model.layers:
     model.add(layer)
 model.add(GlobalAveragePooling2D())
 model.summary()
-```
-```{python}
 
-train_features = model.predict(train_generator,verbose=1)
 ```
 
+### Extracción de Características de las Imágenes y guardado
 
-```{python}
-
-val_features = model.predict(val_generator,verbose=1)
-```
-
-### Guardar los objetos
+En esta sección, el código está configurado para utilizar el modelo previamente definido para extraer características de las imágenes de los conjuntos de entrenamiento y validación. Las líneas comentadas (val_features y train_features) indican que se planea pasar las imágenes a través del modelo (model.predict) para obtener representaciones de las imágenes, es decir, las características extraídas por el modelo hasta la última capa añadida. Estas características son los valores de salida de la red después de haber procesado las imágenes, y pueden ser utilizadas para entrenar un clasificador final o para otras tareas de análisis. Este proceso permite aprovechar las capas convolucionales de VGG16 para generar descripciones compactas y significativas de cada imagen.
 
 
 ```{python}
-import pickle
+
+#val_features = model.predict(val_generator,verbose=1)
+
+#train_features = model.predict(train_generator,verbose=1)
+
+#import pickle
 
 # Especificar la ruta para guardar los archivos
-train_features_path = '../Modelos/train_features.pkl'
-val_features_path = '../Modelos/val_features.pkl'
+#train_features_path = '../Modelos/train_features.pkl'
+#val_features_path = '../Modelos/val_features.pkl'
 
 # Guardar train_features en un archivo .pkl
-with open(train_features_path, 'wb') as f:
-    pickle.dump(train_features, f)
+#with open(train_features_path, 'wb') as f:
+#    pickle.dump(train_features, f)
 
 # Guardar val_features en un archivo .pkl
-with open(val_features_path, 'wb') as f:
-    pickle.dump(val_features, f)
+#with open(val_features_path, 'wb') as f:
+#    pickle.dump(val_features, f)
 ```
 
-# Llamar los objetos cargados
+
+
+
+### Llamar los objetos guardados
+
+
+Se cargan los modelos para continuar con el proceso de entrenamiento del modelo.
+
 
 ```{python}
 import pickle
@@ -305,54 +324,122 @@ with open(train_features_path, 'rb') as f:
 with open(val_features_path, 'rb') as f:
     val_features = pickle.load(f)
 ```
+
+
+### Reducción de dimensionalidad
+
+
+* Las características extraídas utilizando la red VGG16 producen un vector de 512 características. Por lo tanto, si tenemos, por ejemplo, 10,000 productos, la matriz de nuestros datos tendrá unas dimensiones de 10,000 x 512. Veamos si podemos reducir la dimensión de esta matriz.
+
+* Para que un método de reducción de dimensionalidad basado en proyecciones lineales funcione, debe haber una alta correlación entre las características. Sin embargo, visualizar una tabla de coeficientes de correlación para una matriz de dimensiones tan altas utilizaría muchos recursos.
+
+* Por lo tanto, vamos a realizar un Análisis de Componentes Principales (PCA) y analizar la varianza explicada por los componentes principales para verificar si nuestro enfoque de proyección lineal es adecuado.
+
+### Entrenamiento del modelo pca solo dos y mas dimensiones
+
+
+En esta etapa del desarrollo, se aplica el Análisis de Componentes Principales (PCA) para reducir la dimensionalidad de las características extraídas a partir de las imágenes. Inicialmente, las características de 512 dimensiones obtenidas del modelo VGG16 se reducen a solo 2 dimensiones, lo que simplifica significativamente la representación de los datos. Esta reducción permite manejar el conjunto de datos de manera más eficiente, tanto en términos de almacenamiento como de procesamiento, sin perder gran parte de la información relevante. Después de reducir las dimensiones, las nuevas características se integran con las características originales del conjunto de datos de entrenamiento. Esta combinación ofrece al modelo final una representación más compacta y posiblemente más informativa, optimizando así el proceso de entrenamiento y mejorando el rendimiento general del modelo. 
+
 ```{python}
-from sklearn.decomposition import PCA
-```
-```{python}
+# Inicializar PCA para reducir las características a 2 dimensiones
 pca = PCA(2)
+
+# Ajustar PCA a las características de entrenamiento y luego transformar
 pca.fit(train_features)
 train_pca = pca.transform(train_features)
-```
-```{python}
+
+# Aplicar PCA al conjunto de validación y transformarlo
 test_pca = pca.fit_transform(val_features)
-```
-```{python}
+
+# Convertir las características reducidas de entrenamiento a un DataFrame
 train_pca = pd.DataFrame(train_pca)
+
+# Seleccionar las primeras 10 columnas del conjunto de entrenamiento original
 train = train.iloc[:,0:10]
+
+# Combinar las características originales con las nuevas características reducidas por PCA
 train = train.merge(train_pca, how='left', left_index=True, right_index=True)
+
 ```
+
+**Analísis de las dimensiones**
+
 ```{python}
 fig = px.scatter(train, x=0, y=1, color="masterCategory", title='Main Category', height=600, labels={
                      "0": "Principal Component 1",
                      "1": "Principal Component 2"})
 fig.show()
 ```
+
+El gráfico anterior dispersión de los datos proyectados en los dos primeros componentes principales tras aplicar PCA. Cada punto representa un producto y está coloreado según su categoría principal (masterCategory). El gráfico revela cómo se distribuyen las diferentes categorías en el espacio reducido de dos dimensiones. Aunque hay cierta superposición entre las categorías, se pueden observar algunas agrupaciones, lo que sugiere que las categorías comparten características similares, aunque no están completamente separadas. Esta visualización ayuda a entender la distribución de las características reducidas y la relación entre las diferentes categorías.
+
+
+
+
 ```{python}
 fig = px.scatter(train, x=0, y=1, color="gender", title='Gender', height=600, labels={
                      "0": "Principal Component 1",
                      "1": "Principal Component 2"})
 fig.show()
 ```
+
+
+El gráfico anterior de dispersión de los datos proyectados en los dos primeros componentes principales tras aplicar PCA, similar al gráfico anterior. Sin embargo, en esta ocasión, los puntos están coloreados según el género (gender) al que pertenecen los productos. Se puede observar que, aunque hay agrupaciones, las categorías de género están bastante mezcladas en el espacio de los componentes principales. Esto sugiere que las características extraídas no separan claramente los productos según el género, indicando una alta similitud en las características visuales de los productos independientemente del género al que están dirigidos.
+
 ```{python}
 fig = px.scatter(train, x=0, y=1, color="subCategory", title='Sub Category', height=600, labels={
                      "0": "Principal Component 1",
                      "1": "Principal Component 2"})
 fig.show()
 ```
+
+
+
+ En este caso, los puntos están coloreados según la subcategoría de los productos (subCategory). A diferencia de los gráficos anteriores, aquí se observa una mayor dispersión y diversidad en la distribución de las subcategorías a lo largo de los dos componentes principales. Sin embargo, algunas subcategorías pueden compartir características similares, lo que provoca que ciertos puntos de diferentes subcategorías se solapen en el espacio de los componentes principales. Esto indica que, aunque PCA ha reducido la dimensionalidad de los datos, no todas las subcategorías se distinguen claramente en este espacio reducido, sugiriendo que algunos productos dentro de diferentes subcategorías tienen características visuales similares.
+
+
+**Conclusión**
+
+Los 2 componentes principales muestran una separabilidad razonablemente buena en términos de las categorías principales de productos. Tal vez, al considerar más componentes principales, la separabilidad será más evidente.
+
+
+
+**PCA para más dimensiones**
+
+
+
+Saplica PCA a las características del conjunto de entrenamiento para analizar cuánta varianza explican los componentes principales. Tras ajustar y transformar los datos, se calcula la varianza explicada acumulada, que indica cuánta información se conserva al considerar un número creciente de componentes. Finalmente, se genera una gráfica que muestra cómo aumenta la varianza explicada a medida que se incluyen más componentes, ayudando a decidir cuántos son necesarios para retener la mayor parte de la información.
+
+
+
+
+
+
+
 ```{python}
 pca = PCA()
 pca.fit(train_features)
-```
-```{python}
+
 train_pca = pca.transform(train_features)
 variance_explained = np.cumsum(pca.explained_variance_ratio_)
 pcs = range(1,len(variance_explained)+1)
-```
-```{python}
 px.line(x = pcs, y = variance_explained, title = 'Principal Components Cumulative Explained Variance', height=600,  labels={
                      "x": "Principal Components",
                      "y": "Explained Variance"})
 ```
+
+
+
+**Dimensiones Reducidas: 512 -> 200**
+
+* Los primeros 200 componentes principales explican el 99% de la varianza en los datos. Reduciremos las 
+
+* dimensiones de las características de las imágenes a 200.
+
+
+
+**Guardamos el modelo de pca entrenado**
+
 
 ```{python}
 
@@ -367,32 +454,31 @@ with open(pca_model_path, 'wb') as f:
 # with open(pca_model_path, 'rb') as f:
 #     loaded_pca = pickle.load(f)
 ```
+
+
+**Aplicación de la reducción de dimensionalidad**
+
+se aplica PCA para reducir las características del conjunto de validación a las 200 dimensiones más importantes. Las características reducidas se convierten en un DataFrame y se combinan con las primeras 10 columnas del conjunto de datos original para conservar información adicional relevante. Luego, se seleccionan las últimas 200 columnas resultantes como características (X), y se toma la columna id como la variable objetivo (y). Este proceso prepara los datos de validación de manera eficiente para su uso en un modelo, manteniendo la información clave en un espacio de menor dimensión.
+
+
 ```{python}
-val_pca = pca.fit_transform(val_features)#[:,:313]
+val_pca = pca.fit_transform(val_features)[:,:200]
 val_pca = pd.DataFrame(val_pca)
-```
-```{python}
-val_pca
-```
-```{python}
-val_sampled
-```
-```{python}
 val = val_sampled.iloc[:,0:10]
-```
-```{python}
 val = val.merge(val_pca, how='left', left_index=True, right_index=True)
-```
-```{python}
-val
-```
-```{python}
 X = val.iloc[:,-200:]
 y = val['id']
 ```
-```{python}
-y
-```
+
+### Entrenamiento del Modelo de Clasificación K-Nearest Neighbors (KNN)
+
+Hasta este punto, se han preprocesado las imágenes, reducido la dimensionalidad de las características mediante PCA, y preparado un conjunto de datos optimizado. Ahora, el siguiente paso lógico es entrenar un modelo que pueda aprender a clasificar los productos en las diferentes categorías objetivo, utilizando las características procesadas.
+
+El modelo KNN es una opción sencilla y efectiva para este propósito porque funciona bien en espacios de características reducidos, como el que se ha obtenido tras aplicar PCA. KNN clasifica cada producto en función de la similitud con sus vecinos más cercanos en el espacio de características, lo que puede ser especialmente útil cuando las categorías no están claramente separadas en el espacio, como se observó en los gráficos de componentes principales.
+
+Aplicar un algoritmo de clasificación en esta parte del proyecto es esencial para convertir las características numéricas en predicciones categóricas, que es el objetivo final del sistema de clasificación de productos. Este paso convierte todo el trabajo de procesamiento de datos y reducción de dimensionalidad en un modelo práctico que puede ser utilizado para clasificar nuevas imágenes de productos con precisión.
+
+
 ```{python}
 from sklearn.neighbors import KNeighborsClassifier
 import pickle
@@ -409,25 +495,18 @@ neigh.fit(X, y)
 with open(knn_model_path, 'wb') as f:
     pickle.dump(neigh, f)
 ```
-```{python}
-# for _ in range(5):
-#     i = random.randint(1,len(val))
-#     img1 = read_img(val_sampled.loc[i,'filename'])
-#     dist, index = neigh.kneighbors(X=X.iloc[i,:].values.reshape(1,-1))
-#     plt.figure(figsize = (4 , 4))
-#     plt.imshow(img1)
-#     plt.title("Input Image")
 
-#     plt.figure(figsize = (20 , 20))
-#     for i in range(1,6):
-#         plt.subplot(1 , 5, i)
-#         plt.subplots_adjust(hspace = 0.5 , wspace = 0.3)
-#         image = read_img(val_sampled.loc[index[0][i],'filename'])
-#         plt.imshow(image)
-#         plt.title(f'Similar Product #{i}')
-```
 
-# Implementación del modelo
+
+
+
+
+### Implementación del modelo
+
+En esta parte del proyecto, se implementa una función para recomendar productos similares a partir de una imagen de entrada proporcionada por el usuario. El proceso comienza leyendo y procesando la imagen de entrada, ajustándola al tamaño esperado y normalizándola. Luego, se extraen las características visuales de la imagen utilizando el modelo preentrenado (VGG16) y se aplican las mismas técnicas de reducción de dimensionalidad (PCA) que se usaron en las imágenes del dataset original.
+
+A continuación, el modelo K-Nearest Neighbors (KNN) se utiliza para encontrar las imágenes más similares en el conjunto de datos, basándose en las características procesadas de la imagen de entrada. Finalmente, se visualiza la imagen proporcionada por el usuario junto con las imágenes de productos más similares encontradas en el dataset, proporcionando una recomendación visual y personalizada. Esta función es clave para implementar un sistema de recomendación que pueda sugerir productos similares a los que un usuario podría estar interesado, mejorando así la experiencia del usuario en aplicaciones de comercio electrónico o catálogos de productos.
+
 
 
 ```{python}
@@ -473,6 +552,10 @@ def recommend_similar_products(input_image_path, model, pca, neigh, val_sampled,
 ```
 
 
+
+### Ejemplo de recomendación 1
+
+
 ```{python}
 
 # Ejemplo de uso de la función
@@ -482,3 +565,35 @@ input_image_path = '../Datos/extracted_files/pruebas/54055.jpg'
 recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num_recommendations=5)
 ```
 
+
+
+
+### Ejemplo de recomendación 2
+
+
+```{python}
+
+# Ejemplo de uso de la función
+input_image_path = '../Datos/extracted_files/pruebas/54018.jpg'
+
+# Llamar a la función de recomendación
+recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num_recommendations=5)
+```
+
+
+### Ejemplo de recomendación 3
+
+
+```{python}
+
+# Ejemplo de uso de la función
+input_image_path = '../Datos/extracted_files/pruebas/54002.jpg'
+
+# Llamar a la función de recomendación
+recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num_recommendations=5)
+```
+
+
+## Conclusión 
+
+Se puede notar el modelo se equivoca, esto se debe a que el modelo fue entrenado con una muestra muy pequeña por problemas computacionales, sin embargo se espera que al amumentar el tamaño de muestra aumente ese problema disminuya.
