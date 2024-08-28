@@ -30,17 +30,19 @@ aqui poner una tabla con los requisitos o historias de usuarios basicas
 
 # Diagrama de arquitectura
 
-aqui porner una imagen con el digrama de bases de datos 
+aqui porner una imagen con el digrama de bases de datos y explicar de donde viene la base datos y demas
+
 
 # Evidencias de pruebas funcionales
 
-Para el desarrollo de este trabajo se uso una base datos 
+## EDA and Visualization
 
 ```{python}
 import numpy as np
 import pandas as pd
 import os
 import re
+
 import tensorflow as tf
 from threading import Thread
 import time
@@ -71,165 +73,75 @@ init_notebook_mode(connected=True)
 
 ```{python}
 styles_df = pd.read_csv("../Datos/styles.csv", on_bad_lines='skip')
-```
-
-```{python}
 styles_df['filename'] = styles_df['id'].astype(str) + '.jpg'
-```
 
-
-Ejemplo de la base de datos inicial con la que se trabajara el problema 
-
-* id: 
-
-* gender:
-
-* masterCategory: 
-
-* subCategory: 
-
-* articleType: 
-
-* baseColour:
-
-* season: 
-
-* year: 
-
-* usage: 
-
-* productDisplayName: 
-
-* filename: 
-
-
-
-
-```{python}
-styles_df.head(5)
-
-```
-
-
-```{python}
-styles_df.columns
-```
-
-```{python}
 #Nota: primero cambiar images por pruebas y correr, luego volver a poner images y ahi si lee todas las direcciones, es raro al verdad
 
 #Esto parece que no hace falta en qmd
 image_files = os.listdir("../Datos/extracted_files/images")
-```
 
 
-```{python}
-#len(image_files)
-```
-
-
-```{python}
-image_files[:5]
-```
-
-
-```{python}
-import os
 
 def check_image_path(filename):
     path = os.path.join("../Datos/extracted_files/images", filename)
     return path if os.path.exists(path) else None
 
 styles_df['filename'] = styles_df['filename'].apply(check_image_path)
-```
 
-```{python}
-styles_df
-```
-
-
-```{python}
 # Filtrar filas donde la imagen no existe
 styles_df = styles_df[styles_df['filename'].notnull()]
-```
-
-
-```{python}
-styles_df
-```
-
-### Se verifica que todas las imagenes esten
-```{python}
 styles_df['file_found'] = styles_df['id'].apply(lambda x: f"{x}.jpg" in image_files)
-```
-
-```{python}
-styles_df
-```
-
-```{python}
 styles_df = styles_df[styles_df['file_found']].reset_index(drop=True)
-```
+#styles_df.shape[0]
 
-```{python}
-styles_df.shape[0]
-```
-
-## Base de datos final
-
-```{python}
-styles_df
-```
-
-
-```{python}
-styles_df.isnull().sum()
-```
-
-
-```{python}
+#styles_df.isnull().sum()
 # Eliminamos las filas que contienen valores faltantes
 styles_df_clean = styles_df.dropna()
 
 # Revisamos nuevamente la cantidad de valores nulos en cada columna para asegurarnos de que se han eliminado
-print(styles_df_clean.isnull().sum())
-```
+#print(styles_df_clean.isnull().sum())
 
 
-```{python}
-styles_df_clean
-```
-
-### La base de datos final queda con 35844
-
-
-```{python}
-fig = px.bar(styles_df_clean.groupby('masterCategory').count().reset_index(), x='masterCategory',y='id',title='Count per Product Category')
-fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
-```
-
-## Analisis descriptivo
-
-
-```{python}
-fig = px.bar(styles_df_clean.groupby('masterCategory').count().reset_index(), x='masterCategory',y='id',title='Count per Product Category')
-fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
-```
-
-## Desarrollo del modelo
-
-```{python}
-styles_df_clean.columns
-```
-
-```{python}
 styles_df_clean.drop(columns=['productDisplayName','file_found'],inplace=True)
 ```
 
+### Procesamiento de los datos
+
+
+Para llegar a la base de datos final, fue necesario realizar varios pasos clave. Comenzamos cargando un archivo CSV con datos sobre estilos, asegurándonos de omitir cualquier línea malformada. Luego, creamos una columna en el DataFrame que generaba los nombres de archivo de las imágenes asociadas a cada registro.
+
+Posteriormente, verificamos que los archivos de imagen realmente existieran en el directorio correspondiente. Esto nos permitió filtrar el DataFrame, eliminando los registros sin imágenes disponibles. Finalmente, añadimos una columna para marcar explícitamente qué imágenes estaban presentes y filtramos nuevamente para quedarnos solo con los registros válidos.
+
+Todo este proceso de preprocesamiento, que fue esencial para depurar la base de datos y asegurar que solo incluyera registros con imágenes válidas y disponibles, puede verse detalladamente en el script de Python que se encuentra en el repositorio.
+
+A continuación se presenta una muesta de la base datos, la cual quedo con 35844 registros
+
 
 ```{python}
-styles_df_clean.columns
+styles_df_clean.head(5)
 ```
+
+
+### Analisis descriptivo
+
+```{python}
+fig = px.bar(styles_df_clean.groupby('masterCategory').count().reset_index(), x='masterCategory',y='id',title='Count per Product Category')
+fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
+```
+
+La gráfica muestra que la categoría Apparel es la más representada, con una cantidad significativamente mayor de productos que las demás. Accessories y Footwear también tienen una presencia considerable, aunque menor en comparación con Apparel. Las categorías Personal Care, Free Items, Sporting Goods, y Home tienen muy pocos productos. Esto indica una concentración de datos en unas pocas categorías clave. Las categorías menos representadas podrían ser un área de menor enfoque o interés en el conjunto de datos.
+
+
+
+
+## Desarrollo del modelo
+
+
+
+
+### Partición de los datos 
+
+La partición de los datos se realizó de la siguiente manera: se tomó el 80% de los registros del DataFrame styles_df_clean para formar el conjunto de entrenamiento (train), mientras que el 20% restante se reservó para el conjunto de validación (val).
 
 
 ```{python}
@@ -239,6 +151,23 @@ train = styles_df_clean.iloc[:int(n*0.8),:]
 val = styles_df_clean.iloc[int(n*0.8):,:].reset_index(drop=True)
 ```
 
+**Train**
+
+
+```{python}
+train.head(5)
+```
+
+**Validación**
+
+
+```{python}
+val.head(5)
+```
+
+
+Para entrenar el modelo, se decidió trabajar con una muestra debido a limitaciones computacionales, ya que el equipo disponible no era lo suficientemente potente para manejar todo el conjunto de datos. Inicialmente, el modelo se entrenará utilizando 1,000 registros o imágenes, y se validará con 200. La idea es incrementar gradualmente el tamaño de esta muestra hasta determinar el máximo volumen de datos que se puede utilizar de manera efectiva antes de implementar el modelo en producción.
+
 ```{python}
 # Crear una muestra de 5000 filas para el conjunto de entrenamiento
 train_sampled = train.sample(n=1000, random_state=42).reset_index(drop=True)
@@ -246,6 +175,9 @@ train_sampled = train.sample(n=1000, random_state=42).reset_index(drop=True)
 # Crear una muestra de 1000 filas para el conjunto de validación
 val_sampled = val.sample(n=200, random_state=42).reset_index(drop=True)
 ```
+
+
+
 
 ```{python}
 datagen = ImageDataGenerator(rescale=1/255.)
@@ -266,6 +198,8 @@ val_generator = datagen.flow_from_dataframe(dataframe=val_sampled,
                                              shuffle=False,
                                              classes=['images'])
 ```
+
+
 ```{python}
 train_generator
 ```
