@@ -596,4 +596,4 @@ recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num
 
 ## Conclusión 
 
-Se puede notar el modelo se equivoca, esto se debe a que el modelo fue entrenado con una muestra muy pequeña por problemas computacionales, sin embargo se espera que al amumentar el tamaño de muestra aumente ese problema disminuya.
+Se observa que el modelo presenta errores en sus predicciones, lo cual se atribuye al hecho de que fue entrenado con una muestra muy pequeña(1000) debido a limitaciones computacionales. Sin embargo, se espera que al aumentar el tamaño de la muestra, estos errores se reduzcan significativamente, mejorando la precisión del modelo.
