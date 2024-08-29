@@ -50,6 +50,12 @@ print(df.to_markdown(index=False))
 
 aqui porner una imagen con el digrama de bases de datos y explicar de donde viene la base datos y demas
 
+```{python}
+from IPython.display import SVG, display
+
+display(SVG('../Datos/FashionArchitecture.svg'))
+
+```
 
 # Evidencias de pruebas funcionales
 
