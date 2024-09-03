@@ -4,7 +4,7 @@ lang: es
 author:
   - name: Ronald Gabriel Palencia
     email: ropalencia@unal.edu.co
-  - name: Junior Antonio Muños Henao
+  - name: Junior Antonio Muñoz Henao
     email: jmunozhe@unal.edu.co
 format:
   html:
@@ -32,23 +32,41 @@ En particular, en este Trabajo se detalla la implementación técnica del sistem
 
 # Análisis de requisitos del sistema
 
-
+### Requisitos funcionales
 ```{python}
-import pandas as pd
+from IPython.display import SVG, display
 
-# Crear un DataFrame
-data = {
-    "Requisitos funcionales": ["El sistema debe ser capaz de analizar interacciones, preferencias y comportamientos de compra de los usuarios para ofrecer recomendaciones de moda personalizadas que reflejen su estilo y necesidades.", "El sistema debe filtrar entre miles de productos para presentar solo aquellos que se alineen con las preferencias y necesidades del usuario, mejorando la eficiencia en la experiencia de compra.","El sistema debe ofrecer una plataforma dinámica que permita a los usuarios descubrir nuevas tendencias, diseñadores emergentes y marcas éticas, enriqueciendo su experiencia de compra.","El sistema debe adaptarse continuamente a las tendencias de moda globales y a los cambios en el comportamiento de los usuarios, asegurando que las recomendaciones sean siempre relevantes."],
-    "Requisitos no funcionales": ["El sistema debe ser capaz de recuperarse rápidamente de fallos y seguir operando con un mínimo de interrupciones.", "El sistema debe ser escalable para manejar un gran volumen de usuarios y datos, garantizando un rendimiento eficiente incluso durante picos de demanda.","El sistema debe estar disponible para los usuarios en todo momento, con un tiempo de inactividad mínimo, garantizando la fiabilidad del servicio.","El sistema debe proporcionar recomendaciones en el menor tiempo posible para asegurar una experiencia de usuario fluida."],
-}
-df = pd.DataFrame(data)
+display(SVG('../Datos/Requisitosfuncionales.svg'))
+```
 
-# Mostrar la tabla en Markdown
-print(df.to_markdown(index=False))
+### Requisitos no funcionales
+```{python}
+from IPython.display import SVG, display
+
+display(SVG('../Datos/Requisitosnofuncionales.svg'))
 ```
 # Diagrama de arquitectura
 
-aqui porner una imagen con el digrama de bases de datos y explicar de donde viene la base datos y demas
+### Este diagrama muestra la arquitectura de un sistema en AWS diseñado para proporcionar recomendaciones de moda basadas en un modelo alojado en SageMaker.
+
+1. Estructura General:
+
+    El front-end está alojado en GitHub Pages, permitiendo a los usuarios acceder al sistema desde sus dispositivos (desktop o móviles).
+    Cuando un usuario interactúa con la aplicación, las solicitudes pasan a través de un AWS Web Application Firewall (WAF), que filtra el tráfico malicioso antes de llegar al API Gateway.
+
+2. Procesamiento y Escalabilidad:
+
+    El API Gateway gestiona las solicitudes entrantes y las dirige a una función AWS Lambda, que se encarga del procesamiento backend.
+    La función Lambda es escalable y puede manejar picos en la carga de trabajo automáticamente según la demanda.
+
+3. Modelo y Base de Datos en una Subred Privada:
+
+    El modelo de recomendación está alojado en Amazon SageMaker y la base de datos relacional está en Amazon RDS.
+    Ambos servicios están dentro de una subred privada en la VPC, lo que garantiza que no se pueda acceder a ellos directamente desde la Internet pública, aumentando así la seguridad.
+
+4. Monitoreo y Alarma:
+
+    Todo el sistema está monitoreado por Amazon CloudWatch, con alarmas previamente configuradas para detectar y responder a problemas en tiempo real.
 
 ```{python}
 from IPython.display import SVG, display
