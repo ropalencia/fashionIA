@@ -621,3 +621,19 @@ recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num
 ## Conclusión 
 
 Se observa que el modelo presenta errores en sus predicciones, lo cual se atribuye al hecho de que fue entrenado con una muestra muy pequeña(1000) debido a limitaciones computacionales. Sin embargo, se espera que al aumentar el tamaño de la muestra, estos errores se reduzcan significativamente, mejorando la precisión del modelo.
+
+
+
+## Contribucón individual 
+
+
+* Ronald Gabriel Palencia
+
+Desarrollo: Evidencias de pruebas funcionales
+
+
+* Junior Antonio Muños Henao
+Desarrollo: La introducción, Análisis de requisitos del sistema (alto nivel) y
+Diagrama de arquitectura
+
+
