@@ -1,7 +1,20 @@
+# FastAPI for web framework
 fastapi==0.100.0
+
+# Uvicorn for serving the application
 uvicorn==0.22.0
+
+# Pillow for image processing
 pillow==9.3.0
+
+# TensorFlow for machine learning models
 tensorflow==2.12.0
+
+# Scikit-learn for machine learning algorithms
 scikit-learn==1.2.2
+
+# Pandas for data manipulation
 pandas==1.5.3
 
+# Python-multipart for handling form data (needed by FastAPI for file uploads)
+python-multipart
