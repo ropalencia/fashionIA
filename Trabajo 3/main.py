@@ -23,11 +23,11 @@ for layer in base_model.layers:
 model.add(GlobalAveragePooling2D())
 
 # Definir rutas de archivos
-train_features_path = '../Modelos/train_features.pkl'
-val_features_path = '../Modelos/val_features.pkl'
-pca_model_path = '../Modelos/pca_model.pkl'
-knn_model_path = '../Modelos/knn_model.pkl'
-val_path = '../Modelos/val_data.pkl'
+train_features_path = 'Modelos/train_features.pkl'
+val_features_path = 'Modelos/val_features.pkl'
+pca_model_path = 'Modelos/pca_model.pkl'
+knn_model_path = 'Modelos/knn_model.pkl'
+val_path = 'Modelos/val_data.pkl'
 
 # Cargar el PCA y KNN desde los archivos pickle
 with open(pca_model_path, 'rb') as f:
