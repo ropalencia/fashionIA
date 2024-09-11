@@ -39,7 +39,7 @@ with open(knn_model_path, 'rb') as f:
 # Cargar el dataframe 'val' desde el archivo .pkl usando pd.read_pickle()
 val_loaded = pd.read_pickle(val_path)
 
-# Muestreo de las 200 filas de validación
+# Muestreo de las 200 filas d e validación
 val_sampled = val_loaded.sample(n=600, random_state=42).reset_index(drop=True)
 
 
