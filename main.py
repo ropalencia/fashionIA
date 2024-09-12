@@ -22,6 +22,7 @@ for layer in base_model.layers:
     model.add(layer)
 model.add(GlobalAveragePooling2D())
 
+
 # Definir rutas de archivos
 train_features_path = 'Trabajo 3/Modelos/train_features.pkl'
 val_features_path = 'Trabajo 3/Modelos/val_features.pkl'
