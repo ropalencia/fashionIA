@@ -13,6 +13,7 @@ API_ENDPOINT = "https://fashionia-2.onrender.com/recommend/"
 def load_image(image_path):
     return Image.open(image_path)
 
+
 # Título de la app
 st.title("Sistema de Recomendación de Productos")
 
@@ -42,16 +43,18 @@ if uploaded_file is not None:
         img_bytes = img_bytes.getvalue()
 
         try:
+            # Añadir el parámetro 'num_recommendations' como parte de la URL (query parameter)
+            api_url_with_params = f"{API_ENDPOINT}?num_recommendations={num_recommendations}"
+            
             # Llamar a la API para obtener recomendaciones
             response = requests.post(
-                API_ENDPOINT,
-                files={'file': ('image.jpg', img_bytes, 'image/jpeg')},  # Enviar correctamente el archivo
-                data={'num_recommendations': num_recommendations}
+                api_url_with_params,
+                files={'file': ('image.jpg', img_bytes, 'image/jpeg')}  # Enviar correctamente el archivo
             )
 
             # Depuración: Mostrar el código de estado y el contenido de la respuesta
             st.write(f"Status Code: {response.status_code}")
-            st.write(f"Response content: {response.text}")
+            # st.write(f"Response content: {response.text}")
 
             if response.status_code == 200:
                 # Procesar las recomendaciones
