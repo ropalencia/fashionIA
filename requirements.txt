@@ -8,7 +8,6 @@ uvicorn==0.22.0
 pillow==9.3.0
 
 # TensorFlow for machine learning models
-#tensorflow==2.12.0
 tensorflow==2.16.1
 
 # Scikit-learn for machine learning algorithms
@@ -18,4 +17,7 @@ scikit-learn==1.2.2
 pandas==1.5.3
 
 # Python-multipart for handling form data (needed by FastAPI for file uploads)
-python-multipart
+python-multipart==0.0.5
+
+# Streamlit for web interface
+streamlit==1.25.0
