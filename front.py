@@ -5,10 +5,10 @@ import io
 import os
 
 # Configurar la API endpoint que usas con FastAPI
-API_ENDPOINT = "http://127.0.0.1:8000/recommend/"
+#API_ENDPOINT = "http://127.0.0.1:8000/recommend/"
 
 
-#API_ENDPOINT = "https://fashionia-2.onrender.com/recommend/"
+API_ENDPOINT = "https://fashionia-2.onrender.com/recommend/"
 # Función para cargar la imagen desde una ruta
 def load_image(image_path):
     return Image.open(image_path)
