@@ -42,7 +42,7 @@ with open(knn_model_path, 'rb') as f:
 val_loaded = pd.read_pickle(val_path)
 
 # Muestreo de las 200 filas d e validación
-val_sampled = val_loaded.sample(n=600, random_state=42).reset_index(drop=True)
+val_sampled = val_loaded.sample(n=6000, random_state=42).reset_index(drop=True)
 
 
 # Función para leer y procesar una imagen
@@ -91,3 +91,4 @@ async def recommend_similar_products(file: UploadFile = File(...), num_recommend
 
     # Devolver las rutas de las imágenes similares como respuesta JSON
     return {"similar_images": similar_images}
+
