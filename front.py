@@ -15,7 +15,7 @@ def load_image(image_path):
 
 
 # Título de la app
-st.title("Sistema de Recomendación de Productos")
+st.title("Sistema de Recomendación de prendas de Vestir")
 
 # Paso 1: Subir la imagen
 st.write("## Subir una imagen para generar recomendaciones")
