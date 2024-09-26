@@ -22,29 +22,31 @@ appendix-style: default
 
 # Introducción 
 
-En el contexto del comercio electrónico de moda, los consumidores enfrentan un desafío creciente conocido como la parálisis por análisis. Este fenómeno se caracteriza por la dificultad de tomar decisiones de compra debido a la sobreabundancia de opciones disponibles, lo que puede llevar a la indecisión y, en ocasiones, a la insatisfacción con el proceso de compra. La rapidez con la que evolucionan las tendencias de moda y la demanda de personalización intensifican aún más este problema, creando un entorno en el que los consumidores se sienten abrumados y ansiosos.
+En el contexto del comercio electrónico de moda [@FashionDL], los consumidores enfrentan un desafío creciente conocido como la parálisis por análisis. Este fenómeno se caracteriza por la dificultad de tomar decisiones de compra debido a la sobreabundancia de opciones disponibles, lo que puede llevar a la indecisión y, en ocasiones, a la insatisfacción con el proceso de compra. La rapidez con la que evolucionan las tendencias de moda y la demanda de personalización intensifican aún más este problema, creando un entorno en el que los consumidores se sienten abrumados y ansiosos.
 
 En el Trabajo 2, se abordó esta problemática en profundidad, destacando cómo la sobreabundancia de opciones y la volatilidad de las tendencias impactan negativamente en la experiencia de compra. Se presentó la solución propuesta: un sistema de recomendación de moda basado en deep learning, diseñado para simplificar la experiencia de compra al ofrecer sugerencias personalizadas y adaptativas a las tendencias actuales. Esta solución busca mitigar la parálisis por análisis al proporcionar recomendaciones que se alineen con las preferencias individuales y los valores de los consumidores, facilitando así una experiencia de compra más eficiente y satisfactoria.
 
-El presente Trabajo se enfoca en desarrollar e implementar esta solución, profundizando en los aspectos técnicos, metodológicos y económicos necesarios para su realización. La introducción de este trabajo reiterará el problema identificado y explorará cómo la solución propuesta en el Trabajo 02 será aplicada y evaluada en el contexto del desarrollo del sistema de recomendación. Esto incluirá una revisión de las metodologías y estrategias empleadas para abordar la parálisis por análisis y cómo estas se integrarán para mejorar la experiencia del consumidor en el mercado de moda digital.
+El presente Trabajo se enfoca en desarrollar e implementar esta solución, profundizando en los aspectos técnicos, metodológicos y económicos necesarios para su realización. La introducción de este trabajo reiterará el problema identificado y explorará cómo la solución propuesta en el Trabajo 02 será aplicada y evaluada en el contexto del desarrollo del sistema de recomendación. Esto incluirá una revisión de las metodologías y estrategias empleadas para abordar la parálisis por análisis [@FashionDL] y cómo estas se integrarán para mejorar la experiencia del consumidor en el mercado de moda digital.
 
-En particular, en este Trabajo se detalla la implementación técnica del sistema de recomendación, que incluye el desarrollo y entrenamiento de modelos de deep learning para procesar y analizar grandes volúmenes de datos de moda. Se utilizarán técnicas avanzadas de procesamiento de lenguaje natural (NLP) para extraer características relevantes de descripciones de productos y reseñas de usuarios. Además, se integrarán mecanismos de feedback en tiempo real para ajustar las recomendaciones en función de las interacciones del usuario, y se evaluará el rendimiento del sistema mediante métricas de precisión y relevancia. Este enfoque técnico busca optimizar la personalización de las recomendaciones y asegurar que el sistema pueda adaptarse a las preferencias cambiantes de los consumidores, proporcionando así una solución robusta y eficaz a la parálisis por análisis.
+En particular, en este Trabajo se detalla la implementación técnica del sistema de recomendación, que incluye el desarrollo y entrenamiento de modelos de deep learning [@DeepLearningBook] para procesar y analizar grandes volúmenes de datos de moda. Se utilizarán técnicas avanzadas de procesamiento de lenguaje natural (NLP) [@NeuralNetDesign] para extraer características relevantes de descripciones de productos y reseñas de usuarios. Además, se integrarán mecanismos de feedback en tiempo real para ajustar las recomendaciones en función de las interacciones del usuario, y se evaluará el rendimiento del sistema mediante métricas de precisión y relevancia. Este enfoque técnico busca optimizar la personalización de las recomendaciones y asegurar que el sistema pueda adaptarse a las preferencias cambiantes de los consumidores, proporcionando así una solución robusta y eficaz a la parálisis por análisis.
 
 
 # Análisis de requisitos del sistema
 
 ### Requisitos funcionales
+
 ```{python}
 from IPython.display import SVG, display
 
-display(SVG('../Datos/Requisitosfuncionales.svg'))
+display(SVG('Requisitosfuncionales.svg'))
+#C:\Users\DELL\Documents\GitHub\fashionIA\Datos\Requisitosfuncionales.svg
 ```
 
 ### Requisitos no funcionales
 ```{python}
 from IPython.display import SVG, display
 
-display(SVG('../Datos/Requisitosnofuncionales.svg'))
+display(SVG('Requisitosnofuncionales.svg'))
 ```
 # Diagrama de arquitectura
 
@@ -72,7 +74,7 @@ display(SVG('../Datos/Requisitosnofuncionales.svg'))
 ```{python}
 from IPython.display import SVG, display
 
-display(SVG('../Datos/FashionArchitecture.svg'))
+display(SVG('FashionArchitecture.svg'))
 
 ```
 
@@ -114,21 +116,26 @@ init_notebook_mode(connected=True)
 ```
 
 
+```{python}
+#styles_df = pd.read_csv("C:/Users/DELL/Documents/GitHub/fashionIA/Datos/styles.csv", on_bad_lines='skip')
 
+#styles_df = pd.read_csv("../../Datos/styles.csv", on_bad_lines='skip')
+```
 
 ```{python}
-styles_df = pd.read_csv("../Datos/styles.csv", on_bad_lines='skip')
+styles_df = pd.read_csv("../../Datos/styles.csv", on_bad_lines='skip')
 styles_df['filename'] = styles_df['id'].astype(str) + '.jpg'
+
 
 #Nota: primero cambiar images por pruebas y correr, luego volver a poner images y ahi si lee todas las direcciones, es raro al verdad
 
 #Esto parece que no hace falta en qmd
-image_files = os.listdir("../Datos/extracted_files/images")
+image_files = os.listdir("../../Datos/extracted_files/images")
 
 
 
 def check_image_path(filename):
-    path = os.path.join("../Datos/extracted_files/images", filename)
+    path = os.path.join("../../Datos/extracted_files/images", filename)
     return path if os.path.exists(path) else None
 
 styles_df['filename'] = styles_df['filename'].apply(check_image_path)
@@ -286,7 +293,7 @@ plt.show()
 
 ### Configuración del Modelo Base y Arquitectura Final
 
-En esta etapa del proyecto, se configura la arquitectura del modelo utilizando la red preentrenada VGG16, conocida por su eficacia en tareas de visión por computadora. Primero, se carga el modelo VGG16 excluyendo sus capas finales, ya que solo se necesitan las capas convolucionales que extraen características de las imágenes. Luego, se crea un modelo secuencial en el que se añaden todas las capas de VGG16. Para finalizar, se incorpora una capa de GlobalAveragePooling2D, que reduce la dimensionalidad de las características extraídas, preparando el modelo para la tarea específica que se va a abordar. Este proceso permite aprovechar el aprendizaje previo de VGG16 mientras se adapta a nuevas entradas. Toda esta configuración se puede revisar en detalle en el script disponible en el repositorio
+En esta etapa del proyecto, se configura la arquitectura del modelo utilizando la red preentrenada VGG16, conocida por su eficacia en tareas de visión por computadora. Primero, se carga el modelo VGG16[@NLPFashion] excluyendo sus capas finales, ya que solo se necesitan las capas convolucionales que extraen características de las imágenes. Luego, se crea un modelo secuencial en el que se añaden todas las capas de VGG16. Para finalizar, se incorpora una capa de GlobalAveragePooling2D [@DeepLearningBook], que reduce la dimensionalidad de las características extraídas, preparando el modelo para la tarea específica que se va a abordar. Este proceso permite aprovechar el aprendizaje previo de VGG16 mientras se adapta a nuevas entradas. Toda esta configuración se puede revisar en detalle en el script disponible en el repositorio
 
 ```{python}
 base_model = VGG16(include_top=False,input_shape=(256,256,3))
@@ -338,8 +345,8 @@ Se cargan los modelos para continuar con el proceso de entrenamiento del modelo.
 import pickle
 
 # Especificar la ruta para cargar los archivos
-train_features_path = '../Modelos/train_features.pkl'
-val_features_path = '../Modelos/val_features.pkl'
+train_features_path = '../../Modelos/train_features.pkl'
+val_features_path = '../../Modelos/val_features.pkl'
 
 # Cargar train_features desde el archivo .pkl
 with open(train_features_path, 'rb') as f:
@@ -469,7 +476,7 @@ px.line(x = pcs, y = variance_explained, title = 'Principal Components Cumulativ
 ```{python}
 
 # Especificar la ruta para guardar el modelo PCA
-pca_model_path = '../Modelos/pca_model.pkl'
+pca_model_path = '../../Modelos/pca_model.pkl'
 
 # Guardar el modelo PCA en un archivo .pkl
 with open(pca_model_path, 'wb') as f:
@@ -487,11 +494,11 @@ se aplica PCA para reducir las características del conjunto de validación a la
 
 
 ```{python}
-val_pca = pca.fit_transform(val_features)[:,:200]
+val_pca = pca.fit_transform(val_features)[:,:313]
 val_pca = pd.DataFrame(val_pca)
 val = val_sampled.iloc[:,0:10]
 val = val.merge(val_pca, how='left', left_index=True, right_index=True)
-X = val.iloc[:,-200:]
+X = val.iloc[:,-313:]
 y = val['id']
 ```
 
@@ -510,7 +517,7 @@ import pickle
 
 # Suponiendo que X e y ya están definidos
 # Especificar la ruta para guardar el modelo
-knn_model_path = '../Modelos/knn_model.pkl'
+knn_model_path = '../../Modelos/knn_model.pkl'
 
 # Entrenar el modelo KNN
 neigh = KNeighborsClassifier(n_neighbors=6)
@@ -530,7 +537,7 @@ with open(knn_model_path, 'wb') as f:
 
 En esta parte del proyecto, se implementa una función para recomendar productos similares a partir de una imagen de entrada proporcionada por el usuario. El proceso comienza leyendo y procesando la imagen de entrada, ajustándola al tamaño esperado y normalizándola. Luego, se extraen las características visuales de la imagen utilizando el modelo preentrenado (VGG16) y se aplican las mismas técnicas de reducción de dimensionalidad (PCA) que se usaron en las imágenes del dataset original.
 
-A continuación, el modelo K-Nearest Neighbors (KNN) se utiliza para encontrar las imágenes más similares en el conjunto de datos, basándose en las características procesadas de la imagen de entrada. Finalmente, se visualiza la imagen proporcionada por el usuario junto con las imágenes de productos más similares encontradas en el dataset, proporcionando una recomendación visual y personalizada. Esta función es clave para implementar un sistema de recomendación que pueda sugerir productos similares a los que un usuario podría estar interesado, mejorando así la experiencia del usuario en aplicaciones de comercio electrónico o catálogos de productos.
+A continuación, el modelo K-Nearest Neighbors (KNN) [@DeepLearningBook] se utiliza para encontrar las imágenes más similares en el conjunto de datos, basándose en las características procesadas de la imagen de entrada. Finalmente, se visualiza la imagen proporcionada por el usuario junto con las imágenes de productos más similares encontradas en el dataset, proporcionando una recomendación visual y personalizada. Esta función es clave para implementar un sistema de recomendación que pueda sugerir productos similares a los que un usuario podría estar interesado, mejorando así la experiencia del usuario en aplicaciones de comercio electrónico o catálogos de productos.
 
 
 
@@ -555,7 +562,7 @@ def recommend_similar_products(input_image_path, model, pca, neigh, val_sampled,
     img_features_pca = pca.transform(img_features)
 
     # Encontrar las imágenes más similares en el dataset utilizando KNN
-    dist, index = neigh.kneighbors(img_features_pca)
+    dist, index = neigh.kneighbors(img_features_pca[0][:313].reshape(1, -1))
 
     # Visualizar la imagen de entrada
     plt.figure(figsize=(4, 4))
@@ -582,9 +589,13 @@ def recommend_similar_products(input_image_path, model, pca, neigh, val_sampled,
 
 
 ```{python}
+#input_image_path = '../../Datos/extracted_files/pruebas/54055.jpg'
+
+```
+```{python}
 
 # Ejemplo de uso de la función
-input_image_path = '../Datos/extracted_files/pruebas/54055.jpg'
+input_image_path = '../../Datos/extracted_files/pruebas/54055.jpg'
 
 # Llamar a la función de recomendación
 recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num_recommendations=5)
@@ -599,7 +610,7 @@ recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num
 ```{python}
 
 # Ejemplo de uso de la función
-input_image_path = '../Datos/extracted_files/pruebas/54018.jpg'
+input_image_path = '../../Datos/extracted_files/pruebas/54018.jpg'
 
 # Llamar a la función de recomendación
 recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num_recommendations=5)
@@ -612,7 +623,7 @@ recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num
 ```{python}
 
 # Ejemplo de uso de la función
-input_image_path = '../Datos/extracted_files/pruebas/54002.jpg'
+input_image_path = '../../Datos/extracted_files/pruebas/54002.jpg'
 
 # Llamar a la función de recomendación
 recommend_similar_products(input_image_path, model, pca, neigh, val_sampled, num_recommendations=5)
