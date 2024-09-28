@@ -1,0 +1,4 @@
+- source: entrega4.qmd
+  quarto-pub:
+    - id: 3aff1dc5-8e33-45a8-baaa-7794e4dd6808
+      url: 'https://palenciaronald.quarto.pub/funcionalidades-a-nivel-prototipo'

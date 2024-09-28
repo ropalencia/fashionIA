@@ -1,0 +1,116 @@
+---
+title: "Funcionalidades a nivel prototipo."
+lang: es    
+author:
+  - name: Ronald Gabriel Palencia
+    email: ropalencia@unal.edu.co
+  - name: Junior Antonio Muñoz Henao
+    email: jmunozhe@unal.edu.co
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+jupyter: python3
+#echo: false
+theme:
+        light: flatly
+        dark: darkly
+toc: true
+appendix-style: default
+---
+
+
+# Funcionalidades a nivel prototipo.
+
+## Backend funcional
+
+
+El desarrollo del backend se realizó usando FastAPI, creando una API que recibe imágenes y devuelve recomendaciones de productos similares basadas en características visuales. En esta parte del desarrollo, se siguen los siguientes pasos:
+
+
+* Recepción de la imagen: La API permite al usuario cargar una imagen. Esta imagen se procesa convirtiéndola a formato RGB, redimensionándola a 256x256 píxeles y normalizándola, garantizando que esté lista para ser utilizada por los modelos.
+
+* Extracción de características con VGG16: Una vez procesada, la imagen es pasada a través de un modelo preentrenado de VGG16, que extrae un vector de características visuales de la imagen, representando su contenido.
+
+* Reducción de dimensionalidad con PCA: El vector de características extraído es transformado mediante PCA, lo que reduce su dimensionalidad. Esto permite optimizar el proceso de búsqueda de imágenes similares y hacerlo más eficiente.
+
+* Búsqueda de imágenes similares con KNN: Después de aplicar PCA, el algoritmo de K-Nearest Neighbors (KNN) busca en el conjunto de datos las imágenes más similares a la proporcionada por el usuario, calculando las distancias entre las características reducidas.
+
+* Respuesta en formato JSON: Finalmente, se devuelven las rutas de las imágenes más similares junto con las distancias calculadas en formato JSON, facilitando su visualización en el frontend como recomendaciones de productos similares.
+
+Para hacer uso
+
+
+[!https://fashionia-2.onrender.com/docs#/default/recommend_similar_products_recommend__post]
+
+
+
+## Frontend Funcional
+
+El desarrollo del frontend se realizó utilizando la herramienta Streamlit, proporcionando una interfaz sencilla y amigable para interactuar con el sistema de recomendación de productos de moda. En esta parte del desarrollo, se implementan los siguientes pasos:
+
+* Subida de imagen: La aplicación permite al usuario subir una imagen desde su dispositivo (en formato .jpg o .png). Una vez cargada, la imagen se muestra en la pantalla, redimensionada a 150x150 píxeles para mayor nitidez y adaptación al diseño visual.
+
+* Selección del número de recomendaciones: El usuario puede elegir el número de productos recomendados mediante un control deslizante, con un rango de entre 1 y 10 recomendaciones. Este valor es utilizado como parámetro para solicitar a la API el número deseado de productos similares.
+
+* Generación de recomendaciones: Cuando el usuario presiona el botón "Generar Recomendaciones", la imagen se convierte en un archivo binario (formato JPEG) y se envía a la API de recomendación a través de una solicitud POST. Se incluyen también los parámetros adicionales, como el número de recomendaciones solicitadas.
+
+* Procesamiento de la respuesta: Si la API responde exitosamente, la aplicación recibe un conjunto de productos recomendados junto con sus distancias (que indican la similitud con la imagen original). Cada recomendación contiene la ruta de la imagen y la distancia calculada.
+
+* Visualización de las recomendaciones: Las imágenes recomendadas se muestran en la interfaz en un formato de mosaico, distribuidas en columnas (tres columnas por fila). Cada imagen se redimensiona a 150x150 píxeles y se presenta con una etiqueta que indica la distancia con respecto a la imagen original. Si ocurre un error durante el proceso, se muestra un mensaje adecuado para notificar al usuario.
+
+
+[!https://fashionia.onrender.com/]
+
+
+# Material publicitario para promoverlo. 
+
+## Landing Page 
+
+Para promocionar el producto, se diseñó una landing page con un enfoque estratégico, donde se destaca la relevancia y los beneficios del producto. A lo largo de la página, se guía al usuario a través de un embudo de conversión cuidadosamente diseñado. El objetivo principal es motivar al visitante a realizar una prueba gratuita, utilizando llamados a la acción (call to action) efectivos.
+La intención es que, al probar el producto, el usuario se sienta atraído por su valor y se incline a suscribirse a uno de los planes ofrecidos. Esta landing page fue desarrollada utilizando una herramienta no-code, lo que permitió agilizar su implementación y optimizar el proceso sin necesidad de codificación, garantizando una experiencia fluida y visualmente atractiva.
+
+
+[!https://fashionia.website/]
+
+
+## Piezas gráficas publicitarias
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+
+  <img src="/publicidad/1.png" alt="pieza1" style="width: 30%; margin: 10px;">
+  <img src="/publicidad/2.png" alt="pieza2" style="width: 30%; margin: 10px;">
+  <img src="/publicidad/3.png" alt="pieza3" style="width: 30%; margin: 10px;">
+
+</div>
+
+## Piezas gráficas publicitarias
+
+<div class="carousel-container" style="position: relative; width: 80%; margin: auto;">
+
+  <img class="carousel-slide" src="/publicidad/plg1.png" alt="Imagen 1" style="width: 100%; display: block;">
+  <img class="carousel-slide" src="/publicidad/plg2.png" alt="Imagen 2" style="width: 100%; display: none;">
+  <img class="carousel-slide" src="/publicidad/plg3.png" alt="Imagen 3" style="width: 100%; display: none;">
+  <img class="carousel-slide" src="/publicidad/plg4.png" alt="Imagen 4" style="width: 100%; display: none;">
+  <img class="carousel-slide" src="/publicidad/plg5.png" alt="Imagen 5" style="width: 100%; display: none;">
+  <img class="carousel-slide" src="/publicidad/plg6.png" alt="Imagen 6" style="width: 100%; display: none;">
+  <img class="carousel-slide" src="/publicidad/plg7.png" alt="Imagen 7" style="width: 100%; display: none;">
+  <img class="carousel-slide" src="/publicidad/plg8.png" alt="Imagen 8" style="width: 100%; display: none;">
+  <img class="carousel-slide" src="/publicidad/plg9.png" alt="Imagen 9" style="width: 100%; display: none;">
+  <img class="carousel-slide" src="/publicidad/plg10.png" alt="Imagen 10" style="width: 100%; display: none;">
+
+  <button class="prev" onclick="moveSlide(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">&#10094;</button>
+  <button class="next" onclick="moveSlide(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">&#10095;</button>
+  
+</div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+
+  function moveSlide(n) {
+    slides[currentSlide].style.display = "none";
+    currentSlide = (currentSlide + n + slides.length) % slides.length;
+    slides[currentSlide].style.display = "block";
+  }
+</script>
