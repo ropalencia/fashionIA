@@ -292,13 +292,14 @@ Agregar al modelo características adicionales como el **tipo de prenda**, **est
 
 #### **Ronald Gabriel Palencia**
 
-- Desarrollo de la API en FastAPI
-- Desarrollo del frontend en Streamlit
-- Desarrollo del algoritmo
-- Despliegue del modelo en Render
-- Creación de la landing page en WordPress
-- Estructura del informe
-- Organización del repositorio
+- Desarrollo de la API en FastAPI.
+- Desarrollo del frontend en Streamlit.
+- Desarrollo del algoritmo.
+- Despliegue del modelo en Render.
+- Creación de la landing page en WordPress.
+- Estructura del informe para la presentación del producto funcional.
+- Organización del repositorio.
+- Correciones sugeridas por el profesor.
 
 ---
 
