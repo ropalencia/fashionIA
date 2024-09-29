@@ -49,16 +49,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#funcionalidades-a-nivel-prototipo." id="toc-funcionalidades-a-nivel-prototipo." class="nav-link active" data-scroll-target="#funcionalidades-a-nivel-prototipo.">Funcionalidades a nivel prototipo.</a>
+  <li><a href="#funcionalidades-a-nivel-prototipo" id="toc-funcionalidades-a-nivel-prototipo" class="nav-link active" data-scroll-target="#funcionalidades-a-nivel-prototipo">Funcionalidades a nivel prototipo</a>
   <ul class="collapse">
-  <li><a href="#backend-funcional" id="toc-backend-funcional" class="nav-link" data-scroll-target="#backend-funcional">Backend funcional</a></li>
+  <li><a href="#backend-funcional" id="toc-backend-funcional" class="nav-link" data-scroll-target="#backend-funcional">Backend funcional</a>
+  <ul class="collapse">
+  <li><a href="#recepción-de-la-imagen" id="toc-recepción-de-la-imagen" class="nav-link" data-scroll-target="#recepción-de-la-imagen">1. Recepción de la imagen</a></li>
+  <li><a href="#extracción-de-características-con-vgg16" id="toc-extracción-de-características-con-vgg16" class="nav-link" data-scroll-target="#extracción-de-características-con-vgg16">2. Extracción de características con VGG16</a></li>
+  <li><a href="#reducción-de-dimensionalidad-con-pca" id="toc-reducción-de-dimensionalidad-con-pca" class="nav-link" data-scroll-target="#reducción-de-dimensionalidad-con-pca">3. Reducción de dimensionalidad con PCA</a></li>
+  <li><a href="#búsqueda-de-imágenes-similares-con-knn" id="toc-búsqueda-de-imágenes-similares-con-knn" class="nav-link" data-scroll-target="#búsqueda-de-imágenes-similares-con-knn">4. Búsqueda de imágenes similares con KNN</a></li>
+  <li><a href="#respuesta-en-formato-json" id="toc-respuesta-en-formato-json" class="nav-link" data-scroll-target="#respuesta-en-formato-json">5. Respuesta en formato JSON</a></li>
+  </ul></li>
+  <li><a href="#video-explicativo" id="toc-video-explicativo" class="nav-link" data-scroll-target="#video-explicativo">Video explicativo</a></li>
+  <li><a href="#prueba-la-api-tú-mismo" id="toc-prueba-la-api-tú-mismo" class="nav-link" data-scroll-target="#prueba-la-api-tú-mismo">¡Prueba la API tú mismo!</a></li>
   <li><a href="#frontend-funcional" id="toc-frontend-funcional" class="nav-link" data-scroll-target="#frontend-funcional">Frontend Funcional</a></li>
   </ul></li>
   <li><a href="#material-publicitario-para-promoverlo." id="toc-material-publicitario-para-promoverlo." class="nav-link" data-scroll-target="#material-publicitario-para-promoverlo.">Material publicitario para promoverlo.</a>
   <ul class="collapse">
   <li><a href="#landing-page" id="toc-landing-page" class="nav-link" data-scroll-target="#landing-page">Landing Page</a></li>
   <li><a href="#piezas-gráficas-publicitarias" id="toc-piezas-gráficas-publicitarias" class="nav-link" data-scroll-target="#piezas-gráficas-publicitarias">Piezas gráficas publicitarias</a></li>
-  <li><a href="#piezas-gráficas-publicitarias-1" id="toc-piezas-gráficas-publicitarias-1" class="nav-link" data-scroll-target="#piezas-gráficas-publicitarias-1">Piezas gráficas publicitarias</a></li>
+  <li><a href="#plan-de-mercado" id="toc-plan-de-mercado" class="nav-link" data-scroll-target="#plan-de-mercado">Plan de mercado</a></li>
+  <li><a href="#plan-de-negocio" id="toc-plan-de-negocio" class="nav-link" data-scroll-target="#plan-de-negocio">Plan de negocio</a>
+  <ul class="collapse">
+  <li><a href="#reportes-técnicos" id="toc-reportes-técnicos" class="nav-link" data-scroll-target="#reportes-técnicos">Reportes Técnicos</a></li>
+  <li><a href="#reporte-de-contribución-individual-de-los-intregrantes-del-proyecto" id="toc-reporte-de-contribución-individual-de-los-intregrantes-del-proyecto" class="nav-link" data-scroll-target="#reporte-de-contribución-individual-de-los-intregrantes-del-proyecto">Reporte de Contribución Individual de los intregrantes del proyecto</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -91,20 +105,52 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="funcionalidades-a-nivel-prototipo." class="level1">
-<h1>Funcionalidades a nivel prototipo.</h1>
+<section id="funcionalidades-a-nivel-prototipo" class="level1">
+<h1>Funcionalidades a nivel prototipo</h1>
 <section id="backend-funcional" class="level2">
 <h2 class="anchored" data-anchor-id="backend-funcional">Backend funcional</h2>
-<p>El desarrollo del backend se realizó usando FastAPI, creando una API que recibe imágenes y devuelve recomendaciones de productos similares basadas en características visuales. En esta parte del desarrollo, se siguen los siguientes pasos:</p>
-<ul>
-<li><p>Recepción de la imagen: La API permite al usuario cargar una imagen. Esta imagen se procesa convirtiéndola a formato RGB, redimensionándola a 256x256 píxeles y normalizándola, garantizando que esté lista para ser utilizada por los modelos.</p></li>
-<li><p>Extracción de características con VGG16: Una vez procesada, la imagen es pasada a través de un modelo preentrenado de VGG16, que extrae un vector de características visuales de la imagen, representando su contenido.</p></li>
-<li><p>Reducción de dimensionalidad con PCA: El vector de características extraído es transformado mediante PCA, lo que reduce su dimensionalidad. Esto permite optimizar el proceso de búsqueda de imágenes similares y hacerlo más eficiente.</p></li>
-<li><p>Búsqueda de imágenes similares con KNN: Después de aplicar PCA, el algoritmo de K-Nearest Neighbors (KNN) busca en el conjunto de datos las imágenes más similares a la proporcionada por el usuario, calculando las distancias entre las características reducidas.</p></li>
-<li><p>Respuesta en formato JSON: Finalmente, se devuelven las rutas de las imágenes más similares junto con las distancias calculadas en formato JSON, facilitando su visualización en el frontend como recomendaciones de productos similares.</p></li>
-</ul>
-<p>Para hacer uso</p>
-<p>[!https://fashionia-2.onrender.com/docs#/default/recommend_similar_products_recommend__post]</p>
+<p>El desarrollo del backend se realizó usando <strong>FastAPI</strong>, creando una API que recibe imágenes y devuelve recomendaciones de productos similares basadas en características visuales. A continuación, se resumen los pasos más importantes de este proceso:</p>
+<hr>
+<section id="recepción-de-la-imagen" class="level3">
+<h3 class="anchored" data-anchor-id="recepción-de-la-imagen">1. Recepción de la imagen</h3>
+<p>La API permite al usuario cargar una imagen. Esta imagen se procesa convirtiéndola a formato <strong>RGB</strong>, redimensionándola a <strong>256x256 píxeles</strong> y normalizándola, garantizando que esté lista para ser utilizada por los modelos.</p>
+<hr>
+</section>
+<section id="extracción-de-características-con-vgg16" class="level3">
+<h3 class="anchored" data-anchor-id="extracción-de-características-con-vgg16">2. Extracción de características con VGG16</h3>
+<p>Una vez procesada, la imagen es pasada a través de un modelo preentrenado de <strong>VGG16</strong>, que extrae un vector de características visuales de la imagen, representando su contenido.</p>
+<hr>
+</section>
+<section id="reducción-de-dimensionalidad-con-pca" class="level3">
+<h3 class="anchored" data-anchor-id="reducción-de-dimensionalidad-con-pca">3. Reducción de dimensionalidad con PCA</h3>
+<p>El vector de características extraído es transformado mediante <strong>PCA</strong>, lo que reduce su dimensionalidad. Esto permite optimizar el proceso de búsqueda de imágenes similares y hacerlo más eficiente.</p>
+<hr>
+</section>
+<section id="búsqueda-de-imágenes-similares-con-knn" class="level3">
+<h3 class="anchored" data-anchor-id="búsqueda-de-imágenes-similares-con-knn">4. Búsqueda de imágenes similares con KNN</h3>
+<p>Después de aplicar PCA, el algoritmo de <strong>K-Nearest Neighbors (KNN)</strong> busca en el conjunto de datos las imágenes más similares a la proporcionada por el usuario, calculando las distancias entre las características reducidas.</p>
+<hr>
+</section>
+<section id="respuesta-en-formato-json" class="level3">
+<h3 class="anchored" data-anchor-id="respuesta-en-formato-json">5. Respuesta en formato JSON</h3>
+<p>Finalmente, se devuelven las rutas de las imágenes más similares junto con las distancias calculadas en formato <strong>JSON</strong>, facilitando su visualización en el frontend como recomendaciones de productos similares.</p>
+<hr>
+</section>
+</section>
+<section id="video-explicativo" class="level2">
+<h2 class="anchored" data-anchor-id="video-explicativo">Video explicativo</h2>
+<p>A continuación, puedes ver un video demostrativo del sistema en acción:</p>
+<div style="text-align: center; margin-top: 20px;">
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/7AXo-bYGXI4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></p>
+</div>
+<hr>
+</section>
+<section id="prueba-la-api-tú-mismo" class="level2">
+<h2 class="anchored" data-anchor-id="prueba-la-api-tú-mismo">¡Prueba la API tú mismo!</h2>
+<p>Ahora que has visto cómo funciona el sistema, te invitamos a hacer una prueba tú mismo. Puedes acceder a la documentación de la API interactiva y hacer tus propias peticiones:</p>
+<div style="text-align: center; margin-top: 20px;">
+<p><a href="https://fashionia-2.onrender.com/docs" target="_blank" style="background-color: #FF5733; color: white; padding: 15px 30px; text-align: center; text-decoration: none; display: inline-block; font-size: 18px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"> 🚀 Prueba la API en FastAPI </a></p>
+</div>
 </section>
 <section id="frontend-funcional" class="level2">
 <h2 class="anchored" data-anchor-id="frontend-funcional">Frontend Funcional</h2>
@@ -123,31 +169,103 @@ ul.task-list li input[type="checkbox"] {
 <h1>Material publicitario para promoverlo.</h1>
 <section id="landing-page" class="level2">
 <h2 class="anchored" data-anchor-id="landing-page">Landing Page</h2>
-<p>Para promocionar el producto, se diseñó una landing page con un enfoque estratégico, donde se destaca la relevancia y los beneficios del producto. A lo largo de la página, se guía al usuario a través de un embudo de conversión cuidadosamente diseñado. El objetivo principal es motivar al visitante a realizar una prueba gratuita, utilizando llamados a la acción (call to action) efectivos. La intención es que, al probar el producto, el usuario se sienta atraído por su valor y se incline a suscribirse a uno de los planes ofrecidos. Esta landing page fue desarrollada utilizando una herramienta no-code, lo que permitió agilizar su implementación y optimizar el proceso sin necesidad de codificación, garantizando una experiencia fluida y visualmente atractiva.</p>
-<p>[!https://fashionia.website/]</p>
+<p>Para promocionar el producto, se diseñó una landing page con un enfoque estratégico, donde se destaca la relevancia y los beneficios del producto. A lo largo de la página, se guía al usuario a través de un embudo de conversión cuidadosamente diseñado. El objetivo principal es motivar al visitante a realizar una prueba gratuita, utilizando llamados a la acción (call to action) efectivos.</p>
+<p>La intención es que, al probar el producto, el usuario se sienta atraído por su valor y se incline a suscribirse a uno de los planes ofrecidos. Esta landing page fue desarrollada utilizando una herramienta no-code, lo que permitió agilizar su implementación y optimizar el proceso sin necesidad de codificación, garantizando una experiencia fluida y visualmente atractiva.</p>
+<div style="text-align: center; margin-top: 20px;">
+<p><a href="https://fashionia.website/" target="_blank" style="background-color: #4CAF50; color: white; padding: 15px 25px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"> Visita la Landing Page </a></p>
+</div>
 </section>
 <section id="piezas-gráficas-publicitarias" class="level2">
 <h2 class="anchored" data-anchor-id="piezas-gráficas-publicitarias">Piezas gráficas publicitarias</h2>
+<p>Estas piezas gráficas publicitarias fueron creadas con el propósito de atraer la atención del público objetivo hacia una campaña específica, utilizando una combinación de elementos visuales atractivos, mensajes persuasivos y un diseño coherente. Cada una de las imágenes busca transmitir un mensaje claro y directo que resuene con los valores y necesidades del consumidor, a la vez que refuerza la identidad de la marca o producto promovido.</p>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-<p><img src="/publicidad/1.png" alt="pieza1" style="width: 30%; margin: 10px;"> <img src="/publicidad/2.png" alt="pieza2" style="width: 30%; margin: 10px;"> <img src="/publicidad/3.png" alt="pieza3" style="width: 30%; margin: 10px;"></p>
+<p><img src="publicidad/1.png" alt="pieza1" style="width: 30%; margin: 10px;"> <img src="publicidad/2.png" alt="pieza2" style="width: 30%; margin: 10px;"> <img src="publicidad/3.png" alt="pieza3" style="width: 30%; margin: 10px;"></p>
 </div>
 </section>
-<section id="piezas-gráficas-publicitarias-1" class="level2">
-<h2 class="anchored" data-anchor-id="piezas-gráficas-publicitarias-1">Piezas gráficas publicitarias</h2>
-<div class="carousel-container" style="position: relative; width: 80%; margin: auto;">
-<p><img class="carousel-slide" src="/publicidad/plg1.png" alt="Imagen 1" style="width: 100%; display: block;"> <img class="carousel-slide" src="/publicidad/plg2.png" alt="Imagen 2" style="width: 100%; display: none;"> <img class="carousel-slide" src="/publicidad/plg3.png" alt="Imagen 3" style="width: 100%; display: none;"> <img class="carousel-slide" src="/publicidad/plg4.png" alt="Imagen 4" style="width: 100%; display: none;"> <img class="carousel-slide" src="/publicidad/plg5.png" alt="Imagen 5" style="width: 100%; display: none;"> <img class="carousel-slide" src="/publicidad/plg6.png" alt="Imagen 6" style="width: 100%; display: none;"> <img class="carousel-slide" src="/publicidad/plg7.png" alt="Imagen 7" style="width: 100%; display: none;"> <img class="carousel-slide" src="/publicidad/plg8.png" alt="Imagen 8" style="width: 100%; display: none;"> <img class="carousel-slide" src="/publicidad/plg9.png" alt="Imagen 9" style="width: 100%; display: none;"> <img class="carousel-slide" src="/publicidad/plg10.png" alt="Imagen 10" style="width: 100%; display: none;"></p>
-<p><button class="prev" onclick="moveSlide(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❮</button> <button class="next" onclick="moveSlide(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❯</button></p>
+<section id="plan-de-mercado" class="level2">
+<h2 class="anchored" data-anchor-id="plan-de-mercado">Plan de mercado</h2>
+<p>Este Plan de Mercado equilibra una estrategia moderna con influencers y redes sociales, con tácticas de marketing tradicional y acciones de adquisición de usuarios. Las campañas con micro-influencers en moda ética refuerzan la imagen de exclusividad y personalización, mientras que las campañas de SEO y email marketing garantizan una base de clientes constante.</p>
+<div id="carousel-market" class="carousel-container" style="position: relative; width: 80%; margin: auto;">
+<p><img class="carousel-slide-market" src="publicidad/plg1.png" alt="Imagen 1" style="width: 100%; display: block;"> <img class="carousel-slide-market" src="publicidad/plg2.png" alt="Imagen 2" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg3.png" alt="Imagen 3" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg4.png" alt="Imagen 4" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg5.png" alt="Imagen 5" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg6.png" alt="Imagen 6" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg7.png" alt="Imagen 7" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg8.png" alt="Imagen 8" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg9.png" alt="Imagen 9" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg10.png" alt="Imagen 10" style="width: 100%; display: none;"></p>
+<p><button class="prev" onclick="moveSlideMarket(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❮</button> <button class="next" onclick="moveSlideMarket(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❯</button></p>
 </div>
 <script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.carousel-slide');
+  let currentSlideMarket = 0;
+  const slidesMarket = document.querySelectorAll('.carousel-slide-market');
 
-  function moveSlide(n) {
-    slides[currentSlide].style.display = "none";
-    currentSlide = (currentSlide + n + slides.length) % slides.length;
-    slides[currentSlide].style.display = "block";
+  function moveSlideMarket(n) {
+    slidesMarket[currentSlideMarket].style.display = "none";
+    currentSlideMarket = (currentSlideMarket + n + slidesMarket.length) % slidesMarket.length;
+    slidesMarket[currentSlideMarket].style.display = "block";
   }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    slidesMarket.forEach((slide, index) => {
+      slide.style.display = index === 0 ? "block" : "none";
+    });
+  });
 </script>
+</section>
+<section id="plan-de-negocio" class="level2">
+<h2 class="anchored" data-anchor-id="plan-de-negocio">Plan de negocio</h2>
+<p>Este plan de negocios presenta una solución a la “parálisis por análisis” que enfrentan los usuarios al comprar ropa en línea, mediante un sistema de recomendaciones basado en un input de prendas. El modelo de negocio se enfoca en ingresos por suscripciones, publicidad dirigida y licenciamiento del motor de recomendación. Se analizan los costos iniciales, ingresos potenciales y el mercado objetivo, compuesto por personas de 18 a 40 años interesadas en moda sostenible y personalizada.</p>
+<div id="carousel-business" class="carousel-container" style="position: relative; width: 80%; margin: auto;">
+<p><img class="carousel-slide-business" src="publicidad/pln1.png" alt="Plan 1" style="width: 100%; display: block;"> <img class="carousel-slide-business" src="publicidad/pln2.png" alt="Plan 2" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln3.png" alt="Plan 3" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln4.png" alt="Plan 4" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln5.png" alt="Plan 5" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln6.png" alt="Plan 6" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln7.png" alt="Plan 7" style="width: 100%; display: none;"></p>
+<p><button class="prev" onclick="moveSlideBusiness(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❮</button> <button class="next" onclick="moveSlideBusiness(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❯</button></p>
+</div>
+<script>
+  let currentSlideBusiness = 0;
+  const slidesBusiness = document.querySelectorAll('.carousel-slide-business');
+
+  function moveSlideBusiness(n) {
+    slidesBusiness[currentSlideBusiness].style.display = "none";
+    currentSlideBusiness = (currentSlideBusiness + n + slidesBusiness.length) % slidesBusiness.length;
+    slidesBusiness[currentSlideBusiness].style.display = "block";
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    slidesBusiness.forEach((slide, index) => {
+      slide.style.display = index === 0 ? "block" : "none";
+    });
+  });
+</script>
+<section id="reportes-técnicos" class="level3">
+<h3 class="anchored" data-anchor-id="reportes-técnicos">Reportes Técnicos</h3>
+<p>El principal reporte técnico desarrollado está enfocado en la construcción del algoritmo utilizado para el proyecto. Este documento se encuentra publicado en <strong>Quarto Pub</strong>, donde se detallan los aspectos más relevantes del algoritmo, desde su diseño hasta los resultados obtenidos.</p>
+<div style="text-align: center; margin-top: 20px;">
+<p><a href="https://quartopub.com/sites/ab6ced85-7919-49ef-ae9e-f437cb11610c" target="_blank" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"> Ver Reporte Técnico </a></p>
+</div>
+<p>Por otro lado, el código completo del backend y frontend está disponible en GitHub, donde se incluyen comentarios para facilitar la comprensión y uso del sistema. Puedes acceder al repositorio del proyecto dando click en el botom:</p>
+<div style="text-align: center; margin-top: 20px;">
+<p><a href="https://github.com/ropalencia/fashionIA/tree/main/Trabajo%203" target="_blank" style="background-color: #2196F3; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"> Ver Repositorio en GitHub </a></p>
+</div>
+</section>
+<section id="reporte-de-contribución-individual-de-los-intregrantes-del-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="reporte-de-contribución-individual-de-los-intregrantes-del-proyecto">Reporte de Contribución Individual de los intregrantes del proyecto</h3>
+<hr>
+<section id="ronald-gabriel-palencia" class="level4">
+<h4 class="anchored" data-anchor-id="ronald-gabriel-palencia"><strong>Ronald Gabriel Palencia</strong></h4>
+<ul>
+<li>Desarrollo de la API en FastAPI</li>
+<li>Desarrollo del frontend en Streamlit</li>
+<li>Desarrollo del algoritmo</li>
+<li>Despliegue del modelo en Render</li>
+<li>Creación de la landing page en WordPress</li>
+<li>Estructura del informe</li>
+<li>Organización del repositorio</li>
+</ul>
+<hr>
+</section>
+<section id="junior-antonio-muñoz-henao" class="level4">
+<h4 class="anchored" data-anchor-id="junior-antonio-muñoz-henao"><strong>Junior Antonio Muñoz Henao</strong></h4>
+<ul>
+<li>Desarrollo del Plan de negocios</li>
+<li>Desarrollo del Plan de mercadeo</li>
+<li>Desarrollo de piezas publicitarias</li>
+</ul>
+<hr>
+</section>
+</section>
 </section>
 </section>
 

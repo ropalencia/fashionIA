@@ -19,30 +19,58 @@ toc: true
 appendix-style: default
 ---
 
-
-# Funcionalidades a nivel prototipo.
+# Funcionalidades a nivel prototipo
 
 ## Backend funcional
 
+El desarrollo del backend se realizó usando **FastAPI**, creando una API que recibe imágenes y devuelve recomendaciones de productos similares basadas en características visuales. A continuación, se resumen los pasos más importantes de este proceso:
 
-El desarrollo del backend se realizó usando FastAPI, creando una API que recibe imágenes y devuelve recomendaciones de productos similares basadas en características visuales. En esta parte del desarrollo, se siguen los siguientes pasos:
+---
 
+### 1. Recepción de la imagen
+La API permite al usuario cargar una imagen. Esta imagen se procesa convirtiéndola a formato **RGB**, redimensionándola a **256x256 píxeles** y normalizándola, garantizando que esté lista para ser utilizada por los modelos.
 
-* Recepción de la imagen: La API permite al usuario cargar una imagen. Esta imagen se procesa convirtiéndola a formato RGB, redimensionándola a 256x256 píxeles y normalizándola, garantizando que esté lista para ser utilizada por los modelos.
+---
 
-* Extracción de características con VGG16: Una vez procesada, la imagen es pasada a través de un modelo preentrenado de VGG16, que extrae un vector de características visuales de la imagen, representando su contenido.
+### 2. Extracción de características con VGG16
+Una vez procesada, la imagen es pasada a través de un modelo preentrenado de **VGG16**, que extrae un vector de características visuales de la imagen, representando su contenido.
 
-* Reducción de dimensionalidad con PCA: El vector de características extraído es transformado mediante PCA, lo que reduce su dimensionalidad. Esto permite optimizar el proceso de búsqueda de imágenes similares y hacerlo más eficiente.
+---
 
-* Búsqueda de imágenes similares con KNN: Después de aplicar PCA, el algoritmo de K-Nearest Neighbors (KNN) busca en el conjunto de datos las imágenes más similares a la proporcionada por el usuario, calculando las distancias entre las características reducidas.
+### 3. Reducción de dimensionalidad con PCA
+El vector de características extraído es transformado mediante **PCA**, lo que reduce su dimensionalidad. Esto permite optimizar el proceso de búsqueda de imágenes similares y hacerlo más eficiente.
 
-* Respuesta en formato JSON: Finalmente, se devuelven las rutas de las imágenes más similares junto con las distancias calculadas en formato JSON, facilitando su visualización en el frontend como recomendaciones de productos similares.
+---
 
-Para hacer uso
+### 4. Búsqueda de imágenes similares con KNN
+Después de aplicar PCA, el algoritmo de **K-Nearest Neighbors (KNN)** busca en el conjunto de datos las imágenes más similares a la proporcionada por el usuario, calculando las distancias entre las características reducidas.
 
+---
 
-[!https://fashionia-2.onrender.com/docs#/default/recommend_similar_products_recommend__post]
+### 5. Respuesta en formato JSON
+Finalmente, se devuelven las rutas de las imágenes más similares junto con las distancias calculadas en formato **JSON**, facilitando su visualización en el frontend como recomendaciones de productos similares.
 
+---
+
+## Video explicativo
+
+A continuación, puedes ver un video demostrativo del sistema en acción:
+
+<div style="text-align: center; margin-top: 20px;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/7AXo-bYGXI4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+---
+
+## ¡Prueba la API tú mismo!
+
+Ahora que has visto cómo funciona el sistema, te invitamos a hacer una prueba tú mismo. Puedes acceder a la documentación de la API interactiva y hacer tus propias peticiones:
+
+<div style="text-align: center; margin-top: 20px;">
+  <a href="https://fashionia-2.onrender.com/docs" target="_blank" style="background-color: #FF5733; color: white; padding: 15px 30px; text-align: center; text-decoration: none; display: inline-block; font-size: 18px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    🚀 Prueba la API en FastAPI
+  </a>
+</div>
 
 
 ## Frontend Funcional
@@ -63,54 +91,148 @@ El desarrollo del frontend se realizó utilizando la herramienta Streamlit, prop
 [!https://fashionia.onrender.com/]
 
 
-# Material publicitario para promoverlo. 
+# Material publicitario para promoverlo.
 
-## Landing Page 
+## Landing Page
 
 Para promocionar el producto, se diseñó una landing page con un enfoque estratégico, donde se destaca la relevancia y los beneficios del producto. A lo largo de la página, se guía al usuario a través de un embudo de conversión cuidadosamente diseñado. El objetivo principal es motivar al visitante a realizar una prueba gratuita, utilizando llamados a la acción (call to action) efectivos.
+
 La intención es que, al probar el producto, el usuario se sienta atraído por su valor y se incline a suscribirse a uno de los planes ofrecidos. Esta landing page fue desarrollada utilizando una herramienta no-code, lo que permitió agilizar su implementación y optimizar el proceso sin necesidad de codificación, garantizando una experiencia fluida y visualmente atractiva.
 
-
-[!https://fashionia.website/]
+<div style="text-align: center; margin-top: 20px;">
+  <a href="https://fashionia.website/" target="_blank" style="background-color: #4CAF50; color: white; padding: 15px 25px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    Visita la Landing Page
+  </a>
+</div>
 
 
 ## Piezas gráficas publicitarias
+
+Estas piezas gráficas publicitarias fueron creadas con el propósito de atraer la atención del público objetivo hacia una campaña específica, utilizando una combinación de elementos visuales atractivos, mensajes persuasivos y un diseño coherente. Cada una de las imágenes busca transmitir un mensaje claro y directo que resuene con los valores y necesidades del consumidor, a la vez que refuerza la identidad de la marca o producto promovido.
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
 
-  <img src="/publicidad/1.png" alt="pieza1" style="width: 30%; margin: 10px;">
-  <img src="/publicidad/2.png" alt="pieza2" style="width: 30%; margin: 10px;">
-  <img src="/publicidad/3.png" alt="pieza3" style="width: 30%; margin: 10px;">
+  <img src="publicidad/1.png" alt="pieza1" style="width: 30%; margin: 10px;">
+  <img src="publicidad/2.png" alt="pieza2" style="width: 30%; margin: 10px;">
+  <img src="publicidad/3.png" alt="pieza3" style="width: 30%; margin: 10px;">
 
 </div>
 
-## Piezas gráficas publicitarias
+## Plan de mercado
 
-<div class="carousel-container" style="position: relative; width: 80%; margin: auto;">
+Este Plan de Mercado equilibra una estrategia moderna con influencers y redes sociales, con tácticas de marketing tradicional y acciones de adquisición de usuarios. Las campañas con micro-influencers en moda ética refuerzan la imagen de exclusividad y personalización, mientras que las campañas de SEO y email marketing garantizan una base de clientes constante.
 
-  <img class="carousel-slide" src="/publicidad/plg1.png" alt="Imagen 1" style="width: 100%; display: block;">
-  <img class="carousel-slide" src="/publicidad/plg2.png" alt="Imagen 2" style="width: 100%; display: none;">
-  <img class="carousel-slide" src="/publicidad/plg3.png" alt="Imagen 3" style="width: 100%; display: none;">
-  <img class="carousel-slide" src="/publicidad/plg4.png" alt="Imagen 4" style="width: 100%; display: none;">
-  <img class="carousel-slide" src="/publicidad/plg5.png" alt="Imagen 5" style="width: 100%; display: none;">
-  <img class="carousel-slide" src="/publicidad/plg6.png" alt="Imagen 6" style="width: 100%; display: none;">
-  <img class="carousel-slide" src="/publicidad/plg7.png" alt="Imagen 7" style="width: 100%; display: none;">
-  <img class="carousel-slide" src="/publicidad/plg8.png" alt="Imagen 8" style="width: 100%; display: none;">
-  <img class="carousel-slide" src="/publicidad/plg9.png" alt="Imagen 9" style="width: 100%; display: none;">
-  <img class="carousel-slide" src="/publicidad/plg10.png" alt="Imagen 10" style="width: 100%; display: none;">
 
-  <button class="prev" onclick="moveSlide(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">&#10094;</button>
-  <button class="next" onclick="moveSlide(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">&#10095;</button>
+<div id="carousel-market" class="carousel-container" style="position: relative; width: 80%; margin: auto;">
+
+  <img class="carousel-slide-market" src="publicidad/plg1.png" alt="Imagen 1" style="width: 100%; display: block;">
+  <img class="carousel-slide-market" src="publicidad/plg2.png" alt="Imagen 2" style="width: 100%; display: none;">
+  <img class="carousel-slide-market" src="publicidad/plg3.png" alt="Imagen 3" style="width: 100%; display: none;">
+  <img class="carousel-slide-market" src="publicidad/plg4.png" alt="Imagen 4" style="width: 100%; display: none;">
+  <img class="carousel-slide-market" src="publicidad/plg5.png" alt="Imagen 5" style="width: 100%; display: none;">
+  <img class="carousel-slide-market" src="publicidad/plg6.png" alt="Imagen 6" style="width: 100%; display: none;">
+  <img class="carousel-slide-market" src="publicidad/plg7.png" alt="Imagen 7" style="width: 100%; display: none;">
+  <img class="carousel-slide-market" src="publicidad/plg8.png" alt="Imagen 8" style="width: 100%; display: none;">
+  <img class="carousel-slide-market" src="publicidad/plg9.png" alt="Imagen 9" style="width: 100%; display: none;">
+  <img class="carousel-slide-market" src="publicidad/plg10.png" alt="Imagen 10" style="width: 100%; display: none;">
+
+  <button class="prev" onclick="moveSlideMarket(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">&#10094;</button>
+  <button class="next" onclick="moveSlideMarket(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">&#10095;</button>
   
 </div>
 
 <script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.carousel-slide');
+  let currentSlideMarket = 0;
+  const slidesMarket = document.querySelectorAll('.carousel-slide-market');
 
-  function moveSlide(n) {
-    slides[currentSlide].style.display = "none";
-    currentSlide = (currentSlide + n + slides.length) % slides.length;
-    slides[currentSlide].style.display = "block";
+  function moveSlideMarket(n) {
+    slidesMarket[currentSlideMarket].style.display = "none";
+    currentSlideMarket = (currentSlideMarket + n + slidesMarket.length) % slidesMarket.length;
+    slidesMarket[currentSlideMarket].style.display = "block";
   }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    slidesMarket.forEach((slide, index) => {
+      slide.style.display = index === 0 ? "block" : "none";
+    });
+  });
 </script>
+
+## Plan de negocio
+
+Este plan de negocios presenta una solución a la "parálisis por análisis" que enfrentan los usuarios al comprar ropa en línea, mediante un sistema de recomendaciones basado en un input de prendas. El modelo de negocio se enfoca en ingresos por suscripciones, publicidad dirigida y licenciamiento del motor de recomendación. Se analizan los costos iniciales, ingresos potenciales y el mercado objetivo, compuesto por personas de 18 a 40 años interesadas en moda sostenible y personalizada.
+
+<div id="carousel-business" class="carousel-container" style="position: relative; width: 80%; margin: auto;">
+
+  <img class="carousel-slide-business" src="publicidad/pln1.png" alt="Plan 1" style="width: 100%; display: block;">
+  <img class="carousel-slide-business" src="publicidad/pln2.png" alt="Plan 2" style="width: 100%; display: none;">
+  <img class="carousel-slide-business" src="publicidad/pln3.png" alt="Plan 3" style="width: 100%; display: none;">
+  <img class="carousel-slide-business" src="publicidad/pln4.png" alt="Plan 4" style="width: 100%; display: none;">
+  <img class="carousel-slide-business" src="publicidad/pln5.png" alt="Plan 5" style="width: 100%; display: none;">
+  <img class="carousel-slide-business" src="publicidad/pln6.png" alt="Plan 6" style="width: 100%; display: none;">
+  <img class="carousel-slide-business" src="publicidad/pln7.png" alt="Plan 7" style="width: 100%; display: none;">
+
+  <button class="prev" onclick="moveSlideBusiness(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">&#10094;</button>
+  <button class="next" onclick="moveSlideBusiness(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">&#10095;</button>
+  
+</div>
+
+<script>
+  let currentSlideBusiness = 0;
+  const slidesBusiness = document.querySelectorAll('.carousel-slide-business');
+
+  function moveSlideBusiness(n) {
+    slidesBusiness[currentSlideBusiness].style.display = "none";
+    currentSlideBusiness = (currentSlideBusiness + n + slidesBusiness.length) % slidesBusiness.length;
+    slidesBusiness[currentSlideBusiness].style.display = "block";
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    slidesBusiness.forEach((slide, index) => {
+      slide.style.display = index === 0 ? "block" : "none";
+    });
+  });
+</script>
+
+### Reportes Técnicos
+
+El principal reporte técnico desarrollado está enfocado en la construcción del algoritmo utilizado para el proyecto. Este documento se encuentra publicado en **Quarto Pub**, donde se detallan los aspectos más relevantes del algoritmo, desde su diseño hasta los resultados obtenidos.
+
+<div style="text-align: center; margin-top: 20px;">
+  <a href="https://quartopub.com/sites/ab6ced85-7919-49ef-ae9e-f437cb11610c" target="_blank" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    Ver Reporte Técnico
+  </a>
+</div>
+
+Por otro lado, el código completo del backend y frontend está disponible en GitHub, donde se incluyen comentarios para facilitar la comprensión y uso del sistema. Puedes acceder al repositorio del proyecto dando click en el botom:
+
+<div style="text-align: center; margin-top: 20px;">
+  <a href="https://github.com/ropalencia/fashionIA/tree/main/Trabajo%203" target="_blank" style="background-color: #2196F3; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    Ver Repositorio en GitHub
+  </a>
+</div>
+
+
+### Reporte de Contribución Individual de los intregrantes del proyecto
+
+---
+
+#### **Ronald Gabriel Palencia**
+
+- Desarrollo de la API en FastAPI
+- Desarrollo del frontend en Streamlit
+- Desarrollo del algoritmo
+- Despliegue del modelo en Render
+- Creación de la landing page en WordPress
+- Estructura del informe
+- Organización del repositorio
+
+---
+
+#### **Junior Antonio Muñoz Henao**
+
+- Desarrollo del Plan de negocios
+- Desarrollo del Plan de mercadeo
+- Desarrollo de piezas publicitarias
+
+---
