@@ -19,7 +19,7 @@ toc: true
 appendix-style: default
 ---
 
-# Funcionalidades a nivel prototipo
+
 
 ## Backend funcional
 
@@ -52,15 +52,16 @@ Finalmente, se devuelven las rutas de las imágenes más similares junto con las
 
 ---
 
-## Video explicativo
+### Video explicativo
 
 A continuación, puedes ver un video demostrativo del sistema en acción:
 
 <div style="text-align: center; margin-top: 20px;">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/7AXo-bYGXI4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/XvPTltWi7_M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ---
+
 
 ## ¡Prueba la API tú mismo!
 
@@ -73,22 +74,60 @@ Ahora que has visto cómo funciona el sistema, te invitamos a hacer una prueba t
 </div>
 
 
+
 ## Frontend Funcional
 
-El desarrollo del frontend se realizó utilizando la herramienta Streamlit, proporcionando una interfaz sencilla y amigable para interactuar con el sistema de recomendación de productos de moda. En esta parte del desarrollo, se implementan los siguientes pasos:
+El desarrollo del frontend se realizó utilizando **Streamlit**, proporcionando una interfaz sencilla y amigable para interactuar con el sistema de recomendación de productos de moda. A continuación se detallan los principales pasos del desarrollo:
 
-* Subida de imagen: La aplicación permite al usuario subir una imagen desde su dispositivo (en formato .jpg o .png). Una vez cargada, la imagen se muestra en la pantalla, redimensionada a 150x150 píxeles para mayor nitidez y adaptación al diseño visual.
+---
 
-* Selección del número de recomendaciones: El usuario puede elegir el número de productos recomendados mediante un control deslizante, con un rango de entre 1 y 10 recomendaciones. Este valor es utilizado como parámetro para solicitar a la API el número deseado de productos similares.
+### 1. Subida de imagen
+La aplicación permite al usuario subir una imagen desde su dispositivo (en formato **.jpg** o **.png**). Una vez cargada, la imagen se muestra en la pantalla, redimensionada a **150x150 píxeles** para mayor nitidez y adaptación al diseño visual.
 
-* Generación de recomendaciones: Cuando el usuario presiona el botón "Generar Recomendaciones", la imagen se convierte en un archivo binario (formato JPEG) y se envía a la API de recomendación a través de una solicitud POST. Se incluyen también los parámetros adicionales, como el número de recomendaciones solicitadas.
+---
 
-* Procesamiento de la respuesta: Si la API responde exitosamente, la aplicación recibe un conjunto de productos recomendados junto con sus distancias (que indican la similitud con la imagen original). Cada recomendación contiene la ruta de la imagen y la distancia calculada.
+### 2. Selección del número de recomendaciones
+El usuario puede elegir el número de productos recomendados mediante un **control deslizante**, con un rango de entre 1 y 10 recomendaciones. Este valor se utiliza como parámetro para solicitar a la API el número deseado de productos similares.
 
-* Visualización de las recomendaciones: Las imágenes recomendadas se muestran en la interfaz en un formato de mosaico, distribuidas en columnas (tres columnas por fila). Cada imagen se redimensiona a 150x150 píxeles y se presenta con una etiqueta que indica la distancia con respecto a la imagen original. Si ocurre un error durante el proceso, se muestra un mensaje adecuado para notificar al usuario.
+---
+
+### 3. Generación de recomendaciones
+Cuando el usuario presiona el botón **"Generar Recomendaciones"**, la imagen se convierte en un archivo binario (formato **JPEG**) y se envía a la API de recomendación a través de una solicitud POST. También se incluyen los parámetros adicionales, como el número de recomendaciones solicitadas.
+
+---
+
+### 4. Procesamiento de la respuesta
+Si la API responde exitosamente, la aplicación recibe un conjunto de productos recomendados junto con sus distancias (que indican la similitud con la imagen original). Cada recomendación contiene la ruta de la imagen y la distancia calculada.
+
+---
+
+### 5. Visualización de las recomendaciones
+Las imágenes recomendadas se muestran en la interfaz en un formato de **mosaico**, distribuidas en columnas (tres columnas por fila). Cada imagen se redimensiona a **150x150 píxeles** y se presenta con una etiqueta que indica la distancia con respecto a la imagen original. Si ocurre un error durante el proceso, se muestra un mensaje adecuado para notificar al usuario.
+
+---
+
+## Video explicativo
+
+A continuación, puedes ver un video demostrativo de la aplicación frontend en acción:
+
+<div style="text-align: center; margin-top: 20px;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/v9XztGzKELw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+---
 
 
-[!https://fashionia.onrender.com/]
+## ¡Prueba el Frontend!
+
+Te invitamos a interactuar con el sistema de recomendaciones utilizando la aplicación frontend que hemos desarrollado. A continuación, puedes acceder a la interfaz interactiva:
+
+<div style="text-align: center; margin-top: 20px;">
+  <a href="https://fashionia.onrender.com/" target="_blank" style="background-color: #FF5733; color: white; padding: 15px 30px; text-align: center; text-decoration: none; display: inline-block; font-size: 18px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    🎨 Probar el Frontend en Streamlit
+  </a>
+</div>
+
+
 
 
 # Material publicitario para promoverlo.
@@ -121,6 +160,8 @@ Estas piezas gráficas publicitarias fueron creadas con el propósito de atraer 
 ## Plan de mercado
 
 Este Plan de Mercado equilibra una estrategia moderna con influencers y redes sociales, con tácticas de marketing tradicional y acciones de adquisición de usuarios. Las campañas con micro-influencers en moda ética refuerzan la imagen de exclusividad y personalización, mientras que las campañas de SEO y email marketing garantizan una base de clientes constante.
+
+NOTA: DARLE EN LA FLECHA PARA VER LA PRESENTACIÓN 
 
 
 <div id="carousel-market" class="carousel-container" style="position: relative; width: 80%; margin: auto;">
@@ -161,6 +202,8 @@ Este Plan de Mercado equilibra una estrategia moderna con influencers y redes so
 ## Plan de negocio
 
 Este plan de negocios presenta una solución a la "parálisis por análisis" que enfrentan los usuarios al comprar ropa en línea, mediante un sistema de recomendaciones basado en un input de prendas. El modelo de negocio se enfoca en ingresos por suscripciones, publicidad dirigida y licenciamiento del motor de recomendación. Se analizan los costos iniciales, ingresos potenciales y el mercado objetivo, compuesto por personas de 18 a 40 años interesadas en moda sostenible y personalizada.
+
+NOTA: DARLE EN LA FLECHA PARA VER LA PRESENTACIÓN
 
 <div id="carousel-business" class="carousel-container" style="position: relative; width: 80%; margin: auto;">
 
@@ -211,6 +254,36 @@ Por otro lado, el código completo del backend y frontend está disponible en Gi
     Ver Repositorio en GitHub
   </a>
 </div>
+
+## Oportunidades de Mejora
+
+---
+
+### 1. Entrenamiento del modelo con una base de datos más grande  
+El modelo actual podría beneficiarse significativamente al entrenarse con una base de datos más extensa. Existe un conjunto de datos disponible de **16 GB**, que podría mejorar la precisión y variedad de las recomendaciones. Sin embargo, el procesamiento de un conjunto de datos de esta magnitud requerirá un mayor poder computacional, posiblemente recurriendo a soluciones de **procesamiento en la nube** como **AWS**, **Google Cloud** o **Azure** para manejar el entrenamiento de manera eficiente.
+
+---
+
+### 2. Incorporación de variables adicionales  
+Agregar al modelo características adicionales como el **tipo de prenda**, **estilo** y otras propiedades relevantes enriquecería las recomendaciones. Estas variables permitirían personalizar las sugerencias según preferencias específicas del usuario, como eventos formales o casuales, colores, temporadas, entre otros, mejorando la experiencia del usuario y ajustándose más a sus necesidades.
+
+---
+
+## Recomendaciones
+
+<div style="padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+
+  - **Optimización en la nube**: Considerar migrar el entrenamiento del modelo a plataformas de procesamiento en la nube como **AWS Sagemaker**, que no solo permiten entrenar con grandes volúmenes de datos, sino también optimizar costos con opciones de instancias escalables. Esto también facilitaría el uso de **GPUs** para acelerar el proceso de entrenamiento.
+
+  - **Uso de Transfer Learning**: Aprovechar técnicas de **transfer learning** para adaptar un modelo ya entrenado con grandes volúmenes de datos. Esto permitiría entrenar el modelo de forma eficiente sin necesidad de procesar desde cero el conjunto de datos completo.
+
+  - **Implementación de filtros avanzados**: Incluir filtros en la interfaz del frontend que permitan a los usuarios seleccionar criterios adicionales (como **categoría de prendas**, **estación del año** o **preferencias de color**), lo que haría las recomendaciones más personalizadas y relevantes.
+
+  - **Monitoreo y mejora continua del modelo**: Implementar una estrategia de **monitoreo del rendimiento** del modelo, que permita ajustar su comportamiento de manera periódica y agregar nuevos datos de entrenamiento, lo que garantizaría que el sistema evolucione junto con las tendencias y preferencias de los usuarios.
+
+</div>
+
+
 
 
 ### Reporte de Contribución Individual de los intregrantes del proyecto

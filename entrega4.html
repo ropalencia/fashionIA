@@ -49,20 +49,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#funcionalidades-a-nivel-prototipo" id="toc-funcionalidades-a-nivel-prototipo" class="nav-link active" data-scroll-target="#funcionalidades-a-nivel-prototipo">Funcionalidades a nivel prototipo</a>
-  <ul class="collapse">
-  <li><a href="#backend-funcional" id="toc-backend-funcional" class="nav-link" data-scroll-target="#backend-funcional">Backend funcional</a>
+  <li><a href="#backend-funcional" id="toc-backend-funcional" class="nav-link active" data-scroll-target="#backend-funcional">Backend funcional</a>
   <ul class="collapse">
   <li><a href="#recepción-de-la-imagen" id="toc-recepción-de-la-imagen" class="nav-link" data-scroll-target="#recepción-de-la-imagen">1. Recepción de la imagen</a></li>
   <li><a href="#extracción-de-características-con-vgg16" id="toc-extracción-de-características-con-vgg16" class="nav-link" data-scroll-target="#extracción-de-características-con-vgg16">2. Extracción de características con VGG16</a></li>
   <li><a href="#reducción-de-dimensionalidad-con-pca" id="toc-reducción-de-dimensionalidad-con-pca" class="nav-link" data-scroll-target="#reducción-de-dimensionalidad-con-pca">3. Reducción de dimensionalidad con PCA</a></li>
   <li><a href="#búsqueda-de-imágenes-similares-con-knn" id="toc-búsqueda-de-imágenes-similares-con-knn" class="nav-link" data-scroll-target="#búsqueda-de-imágenes-similares-con-knn">4. Búsqueda de imágenes similares con KNN</a></li>
   <li><a href="#respuesta-en-formato-json" id="toc-respuesta-en-formato-json" class="nav-link" data-scroll-target="#respuesta-en-formato-json">5. Respuesta en formato JSON</a></li>
-  </ul></li>
   <li><a href="#video-explicativo" id="toc-video-explicativo" class="nav-link" data-scroll-target="#video-explicativo">Video explicativo</a></li>
-  <li><a href="#prueba-la-api-tú-mismo" id="toc-prueba-la-api-tú-mismo" class="nav-link" data-scroll-target="#prueba-la-api-tú-mismo">¡Prueba la API tú mismo!</a></li>
-  <li><a href="#frontend-funcional" id="toc-frontend-funcional" class="nav-link" data-scroll-target="#frontend-funcional">Frontend Funcional</a></li>
   </ul></li>
+  <li><a href="#prueba-la-api-tú-mismo" id="toc-prueba-la-api-tú-mismo" class="nav-link" data-scroll-target="#prueba-la-api-tú-mismo">¡Prueba la API tú mismo!</a></li>
+  <li><a href="#frontend-funcional" id="toc-frontend-funcional" class="nav-link" data-scroll-target="#frontend-funcional">Frontend Funcional</a>
+  <ul class="collapse">
+  <li><a href="#subida-de-imagen" id="toc-subida-de-imagen" class="nav-link" data-scroll-target="#subida-de-imagen">1. Subida de imagen</a></li>
+  <li><a href="#selección-del-número-de-recomendaciones" id="toc-selección-del-número-de-recomendaciones" class="nav-link" data-scroll-target="#selección-del-número-de-recomendaciones">2. Selección del número de recomendaciones</a></li>
+  <li><a href="#generación-de-recomendaciones" id="toc-generación-de-recomendaciones" class="nav-link" data-scroll-target="#generación-de-recomendaciones">3. Generación de recomendaciones</a></li>
+  <li><a href="#procesamiento-de-la-respuesta" id="toc-procesamiento-de-la-respuesta" class="nav-link" data-scroll-target="#procesamiento-de-la-respuesta">4. Procesamiento de la respuesta</a></li>
+  <li><a href="#visualización-de-las-recomendaciones" id="toc-visualización-de-las-recomendaciones" class="nav-link" data-scroll-target="#visualización-de-las-recomendaciones">5. Visualización de las recomendaciones</a></li>
+  </ul></li>
+  <li><a href="#video-explicativo-1" id="toc-video-explicativo-1" class="nav-link" data-scroll-target="#video-explicativo-1">Video explicativo</a></li>
+  <li><a href="#prueba-el-frontend" id="toc-prueba-el-frontend" class="nav-link" data-scroll-target="#prueba-el-frontend">¡Prueba el Frontend!</a></li>
   <li><a href="#material-publicitario-para-promoverlo." id="toc-material-publicitario-para-promoverlo." class="nav-link" data-scroll-target="#material-publicitario-para-promoverlo.">Material publicitario para promoverlo.</a>
   <ul class="collapse">
   <li><a href="#landing-page" id="toc-landing-page" class="nav-link" data-scroll-target="#landing-page">Landing Page</a></li>
@@ -71,6 +77,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#plan-de-negocio" id="toc-plan-de-negocio" class="nav-link" data-scroll-target="#plan-de-negocio">Plan de negocio</a>
   <ul class="collapse">
   <li><a href="#reportes-técnicos" id="toc-reportes-técnicos" class="nav-link" data-scroll-target="#reportes-técnicos">Reportes Técnicos</a></li>
+  </ul></li>
+  <li><a href="#oportunidades-de-mejora" id="toc-oportunidades-de-mejora" class="nav-link" data-scroll-target="#oportunidades-de-mejora">Oportunidades de Mejora</a>
+  <ul class="collapse">
+  <li><a href="#entrenamiento-del-modelo-con-una-base-de-datos-más-grande" id="toc-entrenamiento-del-modelo-con-una-base-de-datos-más-grande" class="nav-link" data-scroll-target="#entrenamiento-del-modelo-con-una-base-de-datos-más-grande">1. Entrenamiento del modelo con una base de datos más grande</a></li>
+  <li><a href="#incorporación-de-variables-adicionales" id="toc-incorporación-de-variables-adicionales" class="nav-link" data-scroll-target="#incorporación-de-variables-adicionales">2. Incorporación de variables adicionales</a></li>
+  </ul></li>
+  <li><a href="#recomendaciones" id="toc-recomendaciones" class="nav-link" data-scroll-target="#recomendaciones">Recomendaciones</a>
+  <ul class="collapse">
   <li><a href="#reporte-de-contribución-individual-de-los-intregrantes-del-proyecto" id="toc-reporte-de-contribución-individual-de-los-intregrantes-del-proyecto" class="nav-link" data-scroll-target="#reporte-de-contribución-individual-de-los-intregrantes-del-proyecto">Reporte de Contribución Individual de los intregrantes del proyecto</a></li>
   </ul></li>
   </ul></li>
@@ -105,8 +119,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="funcionalidades-a-nivel-prototipo" class="level1">
-<h1>Funcionalidades a nivel prototipo</h1>
 <section id="backend-funcional" class="level2">
 <h2 class="anchored" data-anchor-id="backend-funcional">Backend funcional</h2>
 <p>El desarrollo del backend se realizó usando <strong>FastAPI</strong>, creando una API que recibe imágenes y devuelve recomendaciones de productos similares basadas en características visuales. A continuación, se resumen los pasos más importantes de este proceso:</p>
@@ -136,14 +148,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Finalmente, se devuelven las rutas de las imágenes más similares junto con las distancias calculadas en formato <strong>JSON</strong>, facilitando su visualización en el frontend como recomendaciones de productos similares.</p>
 <hr>
 </section>
-</section>
-<section id="video-explicativo" class="level2">
-<h2 class="anchored" data-anchor-id="video-explicativo">Video explicativo</h2>
+<section id="video-explicativo" class="level3">
+<h3 class="anchored" data-anchor-id="video-explicativo">Video explicativo</h3>
 <p>A continuación, puedes ver un video demostrativo del sistema en acción:</p>
 <div style="text-align: center; margin-top: 20px;">
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/7AXo-bYGXI4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/XvPTltWi7_M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></p>
 </div>
 <hr>
+</section>
 </section>
 <section id="prueba-la-api-tú-mismo" class="level2">
 <h2 class="anchored" data-anchor-id="prueba-la-api-tú-mismo">¡Prueba la API tú mismo!</h2>
@@ -154,16 +166,48 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="frontend-funcional" class="level2">
 <h2 class="anchored" data-anchor-id="frontend-funcional">Frontend Funcional</h2>
-<p>El desarrollo del frontend se realizó utilizando la herramienta Streamlit, proporcionando una interfaz sencilla y amigable para interactuar con el sistema de recomendación de productos de moda. En esta parte del desarrollo, se implementan los siguientes pasos:</p>
-<ul>
-<li><p>Subida de imagen: La aplicación permite al usuario subir una imagen desde su dispositivo (en formato .jpg o .png). Una vez cargada, la imagen se muestra en la pantalla, redimensionada a 150x150 píxeles para mayor nitidez y adaptación al diseño visual.</p></li>
-<li><p>Selección del número de recomendaciones: El usuario puede elegir el número de productos recomendados mediante un control deslizante, con un rango de entre 1 y 10 recomendaciones. Este valor es utilizado como parámetro para solicitar a la API el número deseado de productos similares.</p></li>
-<li><p>Generación de recomendaciones: Cuando el usuario presiona el botón “Generar Recomendaciones”, la imagen se convierte en un archivo binario (formato JPEG) y se envía a la API de recomendación a través de una solicitud POST. Se incluyen también los parámetros adicionales, como el número de recomendaciones solicitadas.</p></li>
-<li><p>Procesamiento de la respuesta: Si la API responde exitosamente, la aplicación recibe un conjunto de productos recomendados junto con sus distancias (que indican la similitud con la imagen original). Cada recomendación contiene la ruta de la imagen y la distancia calculada.</p></li>
-<li><p>Visualización de las recomendaciones: Las imágenes recomendadas se muestran en la interfaz en un formato de mosaico, distribuidas en columnas (tres columnas por fila). Cada imagen se redimensiona a 150x150 píxeles y se presenta con una etiqueta que indica la distancia con respecto a la imagen original. Si ocurre un error durante el proceso, se muestra un mensaje adecuado para notificar al usuario.</p></li>
-</ul>
-<p>[!https://fashionia.onrender.com/]</p>
+<p>El desarrollo del frontend se realizó utilizando <strong>Streamlit</strong>, proporcionando una interfaz sencilla y amigable para interactuar con el sistema de recomendación de productos de moda. A continuación se detallan los principales pasos del desarrollo:</p>
+<hr>
+<section id="subida-de-imagen" class="level3">
+<h3 class="anchored" data-anchor-id="subida-de-imagen">1. Subida de imagen</h3>
+<p>La aplicación permite al usuario subir una imagen desde su dispositivo (en formato <strong>.jpg</strong> o <strong>.png</strong>). Una vez cargada, la imagen se muestra en la pantalla, redimensionada a <strong>150x150 píxeles</strong> para mayor nitidez y adaptación al diseño visual.</p>
+<hr>
 </section>
+<section id="selección-del-número-de-recomendaciones" class="level3">
+<h3 class="anchored" data-anchor-id="selección-del-número-de-recomendaciones">2. Selección del número de recomendaciones</h3>
+<p>El usuario puede elegir el número de productos recomendados mediante un <strong>control deslizante</strong>, con un rango de entre 1 y 10 recomendaciones. Este valor se utiliza como parámetro para solicitar a la API el número deseado de productos similares.</p>
+<hr>
+</section>
+<section id="generación-de-recomendaciones" class="level3">
+<h3 class="anchored" data-anchor-id="generación-de-recomendaciones">3. Generación de recomendaciones</h3>
+<p>Cuando el usuario presiona el botón <strong>“Generar Recomendaciones”</strong>, la imagen se convierte en un archivo binario (formato <strong>JPEG</strong>) y se envía a la API de recomendación a través de una solicitud POST. También se incluyen los parámetros adicionales, como el número de recomendaciones solicitadas.</p>
+<hr>
+</section>
+<section id="procesamiento-de-la-respuesta" class="level3">
+<h3 class="anchored" data-anchor-id="procesamiento-de-la-respuesta">4. Procesamiento de la respuesta</h3>
+<p>Si la API responde exitosamente, la aplicación recibe un conjunto de productos recomendados junto con sus distancias (que indican la similitud con la imagen original). Cada recomendación contiene la ruta de la imagen y la distancia calculada.</p>
+<hr>
+</section>
+<section id="visualización-de-las-recomendaciones" class="level3">
+<h3 class="anchored" data-anchor-id="visualización-de-las-recomendaciones">5. Visualización de las recomendaciones</h3>
+<p>Las imágenes recomendadas se muestran en la interfaz en un formato de <strong>mosaico</strong>, distribuidas en columnas (tres columnas por fila). Cada imagen se redimensiona a <strong>150x150 píxeles</strong> y se presenta con una etiqueta que indica la distancia con respecto a la imagen original. Si ocurre un error durante el proceso, se muestra un mensaje adecuado para notificar al usuario.</p>
+<hr>
+</section>
+</section>
+<section id="video-explicativo-1" class="level2">
+<h2 class="anchored" data-anchor-id="video-explicativo-1">Video explicativo</h2>
+<p>A continuación, puedes ver un video demostrativo de la aplicación frontend en acción:</p>
+<div style="text-align: center; margin-top: 20px;">
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/v9XztGzKELw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></p>
+</div>
+<hr>
+</section>
+<section id="prueba-el-frontend" class="level2">
+<h2 class="anchored" data-anchor-id="prueba-el-frontend">¡Prueba el Frontend!</h2>
+<p>Te invitamos a interactuar con el sistema de recomendaciones utilizando la aplicación frontend que hemos desarrollado. A continuación, puedes acceder a la interfaz interactiva:</p>
+<div style="text-align: center; margin-top: 20px;">
+<p><a href="https://fashionia.onrender.com/" target="_blank" style="background-color: #FF5733; color: white; padding: 15px 30px; text-align: center; text-decoration: none; display: inline-block; font-size: 18px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"> 🎨 Probar el Frontend en Streamlit </a></p>
+</div>
 </section>
 <section id="material-publicitario-para-promoverlo." class="level1">
 <h1>Material publicitario para promoverlo.</h1>
@@ -185,6 +229,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="plan-de-mercado" class="level2">
 <h2 class="anchored" data-anchor-id="plan-de-mercado">Plan de mercado</h2>
 <p>Este Plan de Mercado equilibra una estrategia moderna con influencers y redes sociales, con tácticas de marketing tradicional y acciones de adquisición de usuarios. Las campañas con micro-influencers en moda ética refuerzan la imagen de exclusividad y personalización, mientras que las campañas de SEO y email marketing garantizan una base de clientes constante.</p>
+<p>NOTA: DARLE EN LA FLECHA PARA VER LA PRESENTACIÓN</p>
 <div id="carousel-market" class="carousel-container" style="position: relative; width: 80%; margin: auto;">
 <p><img class="carousel-slide-market" src="publicidad/plg1.png" alt="Imagen 1" style="width: 100%; display: block;"> <img class="carousel-slide-market" src="publicidad/plg2.png" alt="Imagen 2" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg3.png" alt="Imagen 3" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg4.png" alt="Imagen 4" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg5.png" alt="Imagen 5" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg6.png" alt="Imagen 6" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg7.png" alt="Imagen 7" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg8.png" alt="Imagen 8" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg9.png" alt="Imagen 9" style="width: 100%; display: none;"> <img class="carousel-slide-market" src="publicidad/plg10.png" alt="Imagen 10" style="width: 100%; display: none;"></p>
 <p><button class="prev" onclick="moveSlideMarket(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❮</button> <button class="next" onclick="moveSlideMarket(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❯</button></p>
@@ -209,6 +254,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="plan-de-negocio" class="level2">
 <h2 class="anchored" data-anchor-id="plan-de-negocio">Plan de negocio</h2>
 <p>Este plan de negocios presenta una solución a la “parálisis por análisis” que enfrentan los usuarios al comprar ropa en línea, mediante un sistema de recomendaciones basado en un input de prendas. El modelo de negocio se enfoca en ingresos por suscripciones, publicidad dirigida y licenciamiento del motor de recomendación. Se analizan los costos iniciales, ingresos potenciales y el mercado objetivo, compuesto por personas de 18 a 40 años interesadas en moda sostenible y personalizada.</p>
+<p>NOTA: DARLE EN LA FLECHA PARA VER LA PRESENTACIÓN</p>
 <div id="carousel-business" class="carousel-container" style="position: relative; width: 80%; margin: auto;">
 <p><img class="carousel-slide-business" src="publicidad/pln1.png" alt="Plan 1" style="width: 100%; display: block;"> <img class="carousel-slide-business" src="publicidad/pln2.png" alt="Plan 2" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln3.png" alt="Plan 3" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln4.png" alt="Plan 4" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln5.png" alt="Plan 5" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln6.png" alt="Plan 6" style="width: 100%; display: none;"> <img class="carousel-slide-business" src="publicidad/pln7.png" alt="Plan 7" style="width: 100%; display: none;"></p>
 <p><button class="prev" onclick="moveSlideBusiness(-1)" style="position: absolute; top: 50%; left: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❮</button> <button class="next" onclick="moveSlideBusiness(1)" style="position: absolute; top: 50%; right: 0; background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px;">❯</button></p>
@@ -240,6 +286,31 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="https://github.com/ropalencia/fashionIA/tree/main/Trabajo%203" target="_blank" style="background-color: #2196F3; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"> Ver Repositorio en GitHub </a></p>
 </div>
 </section>
+</section>
+<section id="oportunidades-de-mejora" class="level2">
+<h2 class="anchored" data-anchor-id="oportunidades-de-mejora">Oportunidades de Mejora</h2>
+<hr>
+<section id="entrenamiento-del-modelo-con-una-base-de-datos-más-grande" class="level3">
+<h3 class="anchored" data-anchor-id="entrenamiento-del-modelo-con-una-base-de-datos-más-grande">1. Entrenamiento del modelo con una base de datos más grande</h3>
+<p>El modelo actual podría beneficiarse significativamente al entrenarse con una base de datos más extensa. Existe un conjunto de datos disponible de <strong>16 GB</strong>, que podría mejorar la precisión y variedad de las recomendaciones. Sin embargo, el procesamiento de un conjunto de datos de esta magnitud requerirá un mayor poder computacional, posiblemente recurriendo a soluciones de <strong>procesamiento en la nube</strong> como <strong>AWS</strong>, <strong>Google Cloud</strong> o <strong>Azure</strong> para manejar el entrenamiento de manera eficiente.</p>
+<hr>
+</section>
+<section id="incorporación-de-variables-adicionales" class="level3">
+<h3 class="anchored" data-anchor-id="incorporación-de-variables-adicionales">2. Incorporación de variables adicionales</h3>
+<p>Agregar al modelo características adicionales como el <strong>tipo de prenda</strong>, <strong>estilo</strong> y otras propiedades relevantes enriquecería las recomendaciones. Estas variables permitirían personalizar las sugerencias según preferencias específicas del usuario, como eventos formales o casuales, colores, temporadas, entre otros, mejorando la experiencia del usuario y ajustándose más a sus necesidades.</p>
+<hr>
+</section>
+</section>
+<section id="recomendaciones" class="level2">
+<h2 class="anchored" data-anchor-id="recomendaciones">Recomendaciones</h2>
+<div style="padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+<ul>
+<li><p><strong>Optimización en la nube</strong>: Considerar migrar el entrenamiento del modelo a plataformas de procesamiento en la nube como <strong>AWS Sagemaker</strong>, que no solo permiten entrenar con grandes volúmenes de datos, sino también optimizar costos con opciones de instancias escalables. Esto también facilitaría el uso de <strong>GPUs</strong> para acelerar el proceso de entrenamiento.</p></li>
+<li><p><strong>Uso de Transfer Learning</strong>: Aprovechar técnicas de <strong>transfer learning</strong> para adaptar un modelo ya entrenado con grandes volúmenes de datos. Esto permitiría entrenar el modelo de forma eficiente sin necesidad de procesar desde cero el conjunto de datos completo.</p></li>
+<li><p><strong>Implementación de filtros avanzados</strong>: Incluir filtros en la interfaz del frontend que permitan a los usuarios seleccionar criterios adicionales (como <strong>categoría de prendas</strong>, <strong>estación del año</strong> o <strong>preferencias de color</strong>), lo que haría las recomendaciones más personalizadas y relevantes.</p></li>
+<li><p><strong>Monitoreo y mejora continua del modelo</strong>: Implementar una estrategia de <strong>monitoreo del rendimiento</strong> del modelo, que permita ajustar su comportamiento de manera periódica y agregar nuevos datos de entrenamiento, lo que garantizaría que el sistema evolucione junto con las tendencias y preferencias de los usuarios.</p></li>
+</ul>
+</div>
 <section id="reporte-de-contribución-individual-de-los-intregrantes-del-proyecto" class="level3">
 <h3 class="anchored" data-anchor-id="reporte-de-contribución-individual-de-los-intregrantes-del-proyecto">Reporte de Contribución Individual de los intregrantes del proyecto</h3>
 <hr>
